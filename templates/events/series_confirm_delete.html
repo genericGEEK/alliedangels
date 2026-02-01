@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ page_title|default:"Delete Series" }}{% endblock %}
+{% block page_content %}
+
+<section class="section-space-sm">
+    <div class="container">
+        <a href="{% url 'series_list' %}" class="d-inline-flex align-items-center gap-2">
+            <i class="fa fa-arrow-left"></i>
+            Back to event series
+        </a>
+        <!--<h1 class="h3 mb-3 text-danger">Delete Category?</h1>-->
+        <h3 class="sec-title__title text-danger">Delete Event Series?</h3>
+        <br>
+
+        <div class="card mb-4">
+             <div class="card-header"><strong>This action cannot be undone. </strong> This will permanently delete the category:</div>
+             <div class="card-body">
+                 <h5 class="mb-1">{{ series.title }}</h5>
+                 <div class="text-muted">
+                     {{ series.start_date }}{% if series.end_date %} – {{ series.end_date }}{% endif %}
+                 </div>
+             </div>
+         </div>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="d-flex gap-2 justify-content-end">
+                <button type="submit" class="btn btn-danger">
+                    Yes, delete
+                </button>
+                <a href="{{ cancel_url }}" class="btn btn-outline-secondary">Cancel</a>
+            </div>
+        </form>
+
+    </div>
+</section>
+
+{% endblock %}

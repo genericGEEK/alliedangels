@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+        <section class="main-slider-one">
+            <div class="main-slider-one__wrapper">
+                <div class="main-slider-one__carousel cleenhearts-owl__carousel owl-carousel" data-owl-options='{
+			"loop": true,
+			"animateOut": "fadeOut",
+			"animateIn": "fadeIn",
+			"items": 1,
+			"autoplay": true,
+			"autoplayTimeout": 7000,
+			"smartSpeed": 1000,
+			"nav": false,
+			"navText": ["<span class=\"icon-left-arrow\"></span>","<span class=\"icon-right-arrow\"></span>"],
+			"dots": true,
+			"margin": 0
+			}'>
+                    <div class="item">
+                        <div class="main-slider-one__item">
+                            <div class="main-slider-one__bg" style="background-image: url({% static 'images/home-showcase/home-2.png' %});"></div>
+                            <div class="main-slider-one__shape-one" style="background-image: url({% static 'images/shapes/slider-1-shape-1.png' %});"></div>
+                            <div class="main-slider-one__shape-two" style="background-image: url({% static 'images/shapes/slider-1-shape-2.png' %});"></div>
+                            <div class="main-slider-one__content">
+                                <h5 class="main-slider-one__sub-title">A supportive community for women rebuilding safety and confidence</h5>
+
+                                <h2 class="main-slider-one__title">
+                                    <span class="main-slider-one__title__text">A Safe Place to Rebuild</span><br>
+                                    <span class="main-slider-one__title__text">Strength and Hope</span>
+                                </h2>
+                                <!--<div class="main-slider-one__btn">
+                                    <a href="become-a-volunteer.html" class="cleenhearts-btn">
+                                        <div class="cleenhearts-btn__icon-box">
+                                            <div class="cleenhearts-btn__icon-box__inner"><span class="icon-duble-arrow"></span></div>
+                                        </div>
+                                        <span class="cleenhearts-btn__text">join with us</span>
+                                    </a>
+                                    <div class="volunteer-group">
+                                        <a href="volunteer-details.html" class="volunteer-group__link">
+                                            <img src="{% static 'images/volunteer/volunteer-image-1.png' %}" alt="volunteer" class="volunteer-group__image">
+                                        </a>
+                                        <a href="volunteer-details.html" class="volunteer-group__link">
+                                            <img src="{% static 'images/volunteer/volunteer-image-2.png' %}" alt="volunteer" class="volunteer-group__image">
+                                        </a>
+                                        <a href="volunteer-details.html" class="volunteer-group__link">
+                                            <img src="{% static 'images/volunteer/volunteer-image-3.png' %}" alt="volunteer" class="volunteer-group__image">
+                                        </a>
+                                    </div>
+                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- main-slider-end -->
+
+        <br>
+{% endblock content %}

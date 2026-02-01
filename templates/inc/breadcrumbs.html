@@ -1,0 +1,25 @@
+{% load static %}
+
+        <section class="page-header @@extraClassName">
+            <div class="page-header__bg" style="background-image: url('{% static "images/backgrounds/page-header.png" %}');"></div>
+            <div class="container">
+                <h2 class="page-header__title">{{ page_title }}</h2>
+                <ul class="cleenhearts-breadcrumb list-unstyled">
+                    <li><i class="icon-home"></i> <a href="{% url 'home' %}">Home</a></li>
+
+                    {% if breadcrumbs %}
+                        {% for crumb in breadcrumbs %}
+                            <li>
+                                {% if crumb.url %}
+                                    <a href="{{ crumb.url }}">{{ crumb.label }}</a>
+                                {% else %}
+                                    <span>{{ crumb.label }}</span>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        <li><span>{{ page_title }}</span></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </section>

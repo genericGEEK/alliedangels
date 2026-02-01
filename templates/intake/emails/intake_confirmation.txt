@@ -1,0 +1,9 @@
+Hi {{ first_name }},
+
+Thanks for reaching out to Allied Angels.
+
+This form is a first step. You're not committing to anything.
+We will review what you shared and follow up with next steps based on the interests you selected.
+
+With care,
+Allied Angels

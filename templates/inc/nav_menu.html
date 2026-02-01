@@ -1,0 +1,191 @@
+{% load static %}
+        <div class="topbar-one">
+            <div class="container-fluid">
+                <div class="topbar-one__inner">
+                    <ul class="list-unstyled topbar-one__info">
+                        <li class="topbar-one__info__item">
+                            <span class="topbar-one__info__icon icon-envelope"></span>
+                            <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+                        </li>
+                        <li class="topbar-one__info__item">
+                            <span class="topbar-one__info__icon icon-phone"></span>
+                            <a href="tel:{{ site.phone }}">{{ site.phone }}</a>
+                        </li>
+                    </ul>
+                    <div class="topbar-one__right">
+                        <div class="social-link topbar-one__social">
+                            <a href="{{ site.facebook_url }}">
+                                <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                                <span class="sr-only">Facebook</span>
+                            </a>
+                            <a href="{{ site.instagram_url }}" aria-hidden="true">
+                                <i class="fab fa-instagram"></i>
+                                <span class="sr-only">Instagram</span>
+                            </a>
+                            <!--<a href="https://youtube.com" aria-hidden="true">
+                                <i class="fab fa-youtube"></i>
+                                <span class="sr-only">Youtube</span>
+                            </a>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <header class="main-header sticky-header sticky-header--normal">
+            <div class="container-fluid">
+                <div class="main-header__inner">
+                    <div class="main-header__logo">
+                        <a href="index.html">
+                            <img src="{% static 'images/ALL_Logo_Quicksand_Full_78.png' %}" alt="Allied Angels" height="76px">
+                        </a>
+                        <!--<button type="button" class="main-header__sidebar-btn sidebar-btn__toggler">
+                            <span class="icon-grid"></span>
+                        </button>-->
+                    </div>
+                    <div class="main-header__right">
+                        <nav class="main-header__nav main-menu">
+                            <ul class="main-menu__list">
+                                <li class="{% if is_current == 'home' %}current{% endif %}">
+                                    <a href="{% url 'home' %}">Home</a>
+                                </li>
+
+                                <li class="{% if is_current == 'about' %}current{% endif %}">
+                                    <a href="{% url 'about' %}">About Us</a>
+                                </li>
+                                <li class="{% if is_current == 'program' %}current{% endif %}">
+                                    <a href="{% url 'programs' %}">Programs</a>
+                                </li>
+                                <!--<li class="dropdown">
+                                    <a href="{% url 'donate' %}">Donations</a>
+                                    <ul>
+                                        <li><a href="donations-grid.html">Donations Grid</a></li>
+                                        <li><a href="donations-list.html">Donations List</a></li>
+                                        <li><a href="donations-carousel.html">Donations Carousel 01</a></li>
+                                        <li><a href="donations-carousel-2.html">Donations Carousel 02</a></li>
+                                        <li class="dropdown">
+                                            <a href="#">Donation Details</a>
+                                            <ul>
+                                                <li><a href="donation-details.html">No sidebar</a></li>
+                                                <li><a href="donation-details-left.html">Left sidebar</a></li>
+                                                <li><a href="donation-details-right.html">Right sidebar</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="#">Donate Now</a>
+                                            <ul>
+                                                <li><a href="donate.html">No sidebar</a></li>
+                                                <li><a href="donate-left.html">Left sidebar</a></li>
+                                                <li><a href="donate-right.html">Right sidebar</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>-->
+
+                                <li class="{% if is_current == 'event' %}current{% endif %}">
+                                    <a href="{% url 'event_list' %}">events</a>
+                                    {% if user.is_authenticated %}
+                                    <ul>
+                                        <li><a href="{% url 'event_manage_list' %}">Manage Events</a></li>
+                                        <li><a href="{% url 'series_list' %}">Manage Event Series</a></li>
+                                        <li><a href="{% url 'category_list' %}">Manage Event Categories</a></li>
+                                        <!--<li><a href="events-carousel-2.html">Events Carousel 02</a></li>
+                                        <li class="dropdown">
+                                            <a href="#">Event Details</a>
+                                            <ul>
+                                                <li><a href="event-details.html">No sidebar</a></li>
+                                                <li><a href="event-details-left.html">Left sidebar</a></li>
+                                                <li><a href="event-details-right.html">Right sidebar</a></li>
+                                            </ul>
+                                        </li>-->
+                                    </ul>
+                                    {% endif %}
+                                </li>
+
+                                <!--<li class="dropdown">
+                                    <a href="#">Shop</a>
+                                    <ul>
+                                        <li class="dropdown">
+                                            <a href="#">Products</a>
+                                            <ul>
+                                                <li><a href="products.html">No sidebar</a></li>
+                                                <li><a href="products-left.html">Left sidebar</a></li>
+                                                <li><a href="products-right.html">Right sidebar</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="products-carousel.html">Products carousel</a></li>
+                                        <li><a href="product-details.html">Product details</a></li>
+                                        <li><a href="cart.html">Cart</a></li>
+                                        <li><a href="checkout.html">Checkout</a></li>
+                                    </ul>
+                                </li>-->
+
+                                <!--<li class="dropdown">
+                                    <a href="#">News</a>
+                                    <ul>
+                                        <li class="dropdown">
+                                            <a href="#">News grid</a>
+                                            <ul>
+                                                <li><a href="blog-grid.html">No sidebar</a></li>
+                                                <li><a href="blog-grid-left.html">Left sidebar</a></li>
+                                                <li><a href="blog-grid-right.html">Right sidebar</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="#">News list</a>
+                                            <ul>
+                                                <li><a href="blog-list.html">No sidebar</a></li>
+                                                <li><a href="blog-list-left.html">Left sidebar</a></li>
+                                                <li><a href="blog-list-right.html">Right sidebar</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="blog-carousel.html">News carousel 01</a></li>
+                                        <li><a href="blog-carousel-2.html">News carousel 02</a></li>
+                                        <li><a href="blog-carousel-3.html">News carousel 03</a></li>
+                                        <li class="dropdown">
+                                            <a href="#">News details</a>
+                                            <ul>
+                                                <li><a href="blog-details.html">No sidebar</a></li>
+                                                <li><a href="blog-details-left.html">Left sidebar</a></li>
+                                                <li><a href="blog-details-right.html">Right sidebar</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>-->
+                                <li class="{% if is_current == 'connect' %}current{% endif %}">
+                                    <a href="{% url 'connect' %}">Connect</a>
+                                    {% if user.is_authenticated %}
+                                    <ul>
+                                        <li><a href="{% url 'connect_inbox' %}">Connect Inbox</a></li>
+                                    </ul>
+                                    {% endif %}
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="mobile-nav__btn mobile-nav__toggler">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="main-header__cart">
+                            <span class="main-header__cart"></span>
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'logout' %}" class="main-header__cart__link">
+                                    <i class="fa fa-user"></i>&nbsp;<span class="nav-profile__text"> &nbsp;Logout</span>
+                                </a>
+                            {% else %}
+                                <a href="{% url 'login' %}" class="main-header__cart__link">
+                                    <i class="fa fa-user"></i>&nbsp;<span class="nav-profile__text"> &nbsp;Login</span>
+                                </a>
+                            {% endif %}
+                            <!--<span class="main-header__cart__quantity">0</span>-->
+                        </div>
+                        <a href="#" class="cleenhearts-btn main-header__btn">
+                            <div class="cleenhearts-btn__icon-box">
+                                <div class="cleenhearts-btn__icon-box__inner"><span><i class="fa fa-hand-holding-heart"></i></span></div>
+                            </div>
+                            <span class="cleenhearts-btn__text">donate now</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>

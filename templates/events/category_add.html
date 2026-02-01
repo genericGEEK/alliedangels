@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block page_content %}
+
+<section class="section-space-sm">
+    <div class="container">
+        <a href="{% url 'category_list' %}" class="d-inline-flex align-items-center gap-2">
+            <i class="fa fa-arrow-left"></i>
+            Back to categories
+        </a>
+        <h3 class="sec-title__title">{{ page_title }}</h3>
+        <br>
+
+        {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
+        {% endif %}
+
+        <form method="post" class="form-one">
+            {% csrf_token %}
+            {{ form.media }}
+
+            {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+            <div class="alert alert-danger">{{ error }}</div>
+            {% endfor %}
+            {% endif %}
+
+            <div class="card mb-3">
+                <div class="card-header"><strong>Category</strong></div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label">Category Name</label>
+                        {{ form.name }}
+                        {{ form.name.errors }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex gap-2 justify-content-end">
+                <button type="submit" class="btn btn-all-primary">
+                    {% if object %}Update{% else %}Create{% endif %}
+                </button>
+                <a href="{{ cancel_url }}" class="btn btn-outline-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock page_content %}

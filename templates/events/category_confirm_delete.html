@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block page_content %}
+
+<section class="section-space-sm">
+    <div class="container">
+        <a href="{% url 'category_list' %}" class="d-inline-flex align-items-center gap-2">
+            <i class="fa fa-arrow-left"></i>
+            Back to categories
+        </a>
+        <!--<h1 class="h3 mb-3 text-danger">Delete Category?</h1>-->
+        <h3 class="sec-title__title text-danger">Delete Category?</h3>
+        <br>
+        <!-- <div class="card mb-4">
+             <div class="card-header"><strong>This action cannot be undone. </strong> This will permanently delete the category:</div>
+             <div class="card-body">
+                 <h5 class="mb-1">{{ event.title }}</h5>
+                 <div class="text-muted">
+                     {{ event.start }}{% if event.end %} – {{ event.end }}{% endif %}
+                 </div>
+
+                 {% if event.series %}
+                 <div class="text-muted small mt-1">
+                     Part of series: <strong>{{ event.series.title }}</strong>
+                 </div>
+                 {% endif %}
+             </div>
+         </div>-->
+        <div class="row g-3 mb-4">
+            <div class="col-12 col-lg-6">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <strong>Events using this category</strong>
+                        <span class="text-muted">({{ related_events_count }})</span>
+                    </div>
+                    <div class="card-body">
+                        {% if related_events_count %}
+                        <ul class="mb-0">
+                            {% for e in related_events %}
+                            <li>
+                                <a href="{% url 'event_manage_detail' slug=e.slug %}">{{ e.title }}</a>
+                                <span class="text-muted small">({{ e.start }})</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+
+                        {% if related_events_count > related_events|length %}
+                        <div class="text-muted small mt-2">
+                            Showing first {{ related_events|length }} of {{ related_events_count }}.
+                        </div>
+                        {% endif %}
+                        {% else %}
+                        <div class="text-muted">None</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <strong>Series using this category</strong>
+                        <span class="text-muted">({{ related_series_count }})</span>
+                    </div>
+                    <div class="card-body">
+                        {% if related_series_count %}
+                        <ul class="mb-0">
+                            {% for s in related_series %}
+                            <li>
+                                <a href="{% url 'series_manage_detail' slug=s.slug %}">{{ s.title }}</a>
+                                <span class="text-muted small">(starts {{ s.start_date }})</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+
+                        {% if related_series_count > related_series|length %}
+                        <div class="text-muted small mt-2">
+                            Showing first {{ related_series|length }} of {{ related_series_count }}.
+                        </div>
+                        {% endif %}
+                        {% else %}
+                        <div class="text-muted">None</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            <div class="d-flex gap-2 justify-content-end">
+                <button type="submit" class="btn btn-danger">
+                    Yes, delete category
+                </button>
+                <a href="{{ cancel_url }}" class="btn btn-outline-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock page_content %}

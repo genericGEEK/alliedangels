@@ -1,0 +1,656 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block page_content %}
+
+        <!-- Survivor Led -->
+        <section class="about-one @@extraClassName section-space">
+            <div class="about-one__bg">
+                <div class="about-one__bg__border"></div>
+                <div class="about-one__bg__inner" style="background-image: url('{% static "images/shapes/about-shape-1-1.png" %}');"></div>
+            </div>
+            <div class="container">
+                <div class="row gutter-y-50">
+                    <div class="col-xl-6 wow fadeInLeft" data-wow-delay="00ms" data-wow-duration="1500ms">
+                        <div class="about-one__left">
+                            <div class="about-one__image">
+                                <img src="{% static 'images/about/about-main.jpg' %}" alt="about" class="about-one__image__one">
+                                <!--<div class="about-one__video" style="background-image: url('assets/images/about/about-1-2.png');">
+                                    <a href="https://www.youtube.com/watch?v=h9MbznbxlLc" class="about-one__video__btn video-button video-popup">
+                                        <span class="icon-play"></span>
+                                        <i class="video-button__ripple"></i>
+                                    </a>
+                                </div>
+                                <div class="about-one__profile volunteer-profile">
+                                    <div class="volunteer-profile__inner">
+                                        <img src="assets/images/resources/robert-joe-kerry.png" alt="Robert Joe Kerry" class="volunteer-profile__image">
+                                        <div class="volunteer-profile__info">
+                                            <h4 class="volunteer-profile__name"><a href="volunteer-details.html">Robert Joe Kerry</a></h4>
+                                            <p class="volunteer-profile__designation">Founder</p>
+                                        </div>
+                                    </div>
+                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="about-one__content">
+                            <div class="sec-title">
+
+                                <h6 class="sec-title__tagline @@extraClassName">ABOUT ALLIED ANGELS</h6>
+
+                                <h3 class="sec-title__title">Survivor<span class="sec-title__title__inner">-led</span></h3>
+                            </div>
+                            <div class="about-one__text-box wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
+                                <div class="about-one__text-box__image">
+                                    <img src="{% static 'images/about/about-women.jpeg' %}" alt="about">
+                                </div>
+                                <p class="about-one__text">Allied Angels is a survivor led community grounded in connection, trust, and shared understanding. Here, healing happens at your pace, in ways that feel safe and authentic to you.</p>
+                            </div>
+                            <div class="about-one__wrapper">
+                                <div class="row gutter-y-40">
+                                    <div class="col-lg-4 col-sm-4 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
+                                        <div class="about-one__donate about-one__donate--one">
+                                            <div class="about-one__donate__icon">
+                                                <span><i class="fas fa-users"></i></span>
+                                            </div>
+                                            <h4 class="about-one__donate__title">Connection</h4>
+                                            <!--<div class="about-one__donate__text">
+                                                <span>You belong here</span>
+                                            </div>-->
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-sm-4 wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
+                                        <div class="about-one__donate about-one__donate--two">
+                                            <div class="about-one__donate__icon">
+                                                <span><i class="fas fa-heart"></i></span>
+                                            </div>
+                                            <h4 class="about-one__donate__title">Healing</h4>
+                                            <!--<div class="about-one__donate__text">
+                                                <span>At your own pace</span>
+                                            </div>-->
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-sm-4 wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1500ms">
+                                        <div class="about-one__donate about-one__donate--three">
+                                            <div class="about-one__donate__icon">
+                                                <span><i class="fas fa-star"></i></span>
+                                            </div>
+                                            <h4 class="about-one__donate__title">Empowerment</h4>
+                                            <!--<div class="about-one__donate__text">
+                                                <span>Your voice matters</span>
+                                            </div>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contact-information">
+                                <!--<a href="contact.html" class="contact-information__btn cleenhearts-btn">
+                                    <div class="cleenhearts-btn__icon-box">
+                                        <div class="cleenhearts-btn__icon-box__inner"><span class="icon-duble-arrow"></span></div>
+                                    </div>
+                                    <span class="cleenhearts-btn__text">more about us</span>
+                                </a>-->
+                                <div class="contact-information__phone">
+                                    <div class="contact-information__phone__icon">
+                                        <span class="icon-phone"></span>
+                                    </div>
+                                    <div class="contact-information__phone__text">
+                                        <span>call any time</span>
+                                        <h5><a href="tel:{{ site.phone }}">{{ site.phone }}</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img src="{% static 'images/shapes/about-shape-1-2.png' %}" alt="cleenhearts" class="about-one__hand">
+        </section>
+
+        <!-- Mission & Vision -->
+        <section class="story-one section-space-top cleenhearts-jarallax" data-jarallax data-speed="0.3" style="background-image: url('{% static 'images/about/about-bg.png' %}');">
+            <div class="container">
+                <div class="sec-title">
+
+                    <h6 class="sec-title__tagline @@extraClassName">ALLIED ANGELS</h6>
+
+                    <h3 class="sec-title__title">Rooted in <span class="sec-title__title__inner">Hope</span></h3>
+                </div>
+
+                <div class="story-one__tabs-box tabs-box">
+                    <div class="tabs-content">
+                        <div class="tab active-tab" id="our_mission" style="display: block;">
+                            <div class="row gutter-y-40">
+                                <div class="col-xl-6 animated fadeInLeft" data-wow-duration="1500ms" data-wow-delay="100ms">
+                                    <div class="story-one__image">
+                                        <img src="{% static 'images/about/mission.jpg' %}" width="570" height="445" alt="story">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 animated fadeInRight" data-wow-duration="1500ms" data-wow-delay="100ms">
+                                    <div class="story-one__content">
+                                        <h3 class="story-one__title">Our Mission</h3>
+                                        <p class="story-one__text story-one__text--one mission_font_lg">Allied Angels exists to provide a flight path for survivors of abuse through goal-oriented mentorship, community, and the power of shared stories.</p>
+                                        <!--<p class="story-one__text story-one__text--two">Nam ultrices odio a felis lobortis convallis. In ex nunc, ornare non condimentum et, egestas vel massa. Nullam hendrerit</p>-->
+                                        <div class="volunteer-profile">
+                                            <div class="volunteer-profile__inner">
+                                                <img src="{% static 'images/about/lindsay_port.png' %}" alt="Lindsay Casey" class="Robert Joe Kerry" width="82">
+                                                <div class="volunteer-profile__info">
+                                                    <h4 class="volunteer-profile__name"><a href="volunteer-details.html">Lindsay Casey</a></h4>
+                                                    <p class="volunteer-profile__designation">Founder</p>
+                                                </div>
+                                            </div>
+                                            <!--<img src="{% static 'images/resources/volunteer-d-signature.png' %}" alt="Robert Joe Kerry signature" class="volunteer-profile__signature">-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab" id="our_vision" style="display: none;">
+                            <div class="row gutter-y-40">
+                                <div class="col-xl-6 animated fadeInLeft" data-wow-duration="1500ms" data-wow-delay="100ms">
+                                    <div class="story-one__image">
+                                        <img src="{% static 'images/about/vision.jpg' %}" alt="story">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 animated fadeInRight" data-wow-duration="1500ms" data-wow-delay="100ms">
+                                    <div class="story-one__content">
+                                        <h3 class="story-one__title">Our Vision</h3>
+                                        <p class="story-one__text story-one__text--one mission_font_lg">A world where no survivor flies alone and every voice is a catalyst for ending abuse against women.</p>
+                                        <!--<p class="story-one__text story-one__text--two">Nam ultrices odio a felis lobortis convallis. In ex nunc, ornare non condimentum et, egestas vel massa. Nullam hendrerit</p>-->
+                                        <div class="volunteer-profile">
+                                            <div class="volunteer-profile__inner">
+                                                <img src="{% static 'images/about/lindsay_port.png' %}" alt="Lindsay Casey" class="Robert Joe Kerry" width="82">
+                                                <div class="volunteer-profile__info">
+                                                    <h4 class="volunteer-profile__name"><a href="volunteer-details.html">Lindsay Casey</a></h4>
+                                                    <p class="volunteer-profile__designation">Founder</p>
+                                                </div>
+                                            </div>
+                                            <!--<img src="{% static 'images/resources/volunteer-d-signature.png' %}" alt="Robert Joe Kerry signature" class="volunteer-profile__signature">-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="story-one__divider"></div>
+                    <div class="tab-buttons">
+                        <div class="row gutter-y-20">
+                            <div class="col-lg-6 col-sm-4 col-6">
+                                <div data-tab="#our_mission" class="tab-btn tab-btn--one active-btn wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
+                                    <h3 class="tab-btn__text">Our Mission</h3>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-4 col-6">
+                                <div data-tab="#our_vision" class="tab-btn tab-btn--two wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
+                                    <h3 class="tab-btn__text">Our Vision</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team -->
+        <section class="team-one section-space">
+            <div class="container">
+                <div class="team-one__top">
+                    <div class="row gutter-y-30 align-items-center">
+                        <div class="col-xxl-8 col-lg-7">
+                            <div class="sec-title">
+
+                                <h6 class="sec-title__tagline @@extraClassName">Our expert team</h6>
+
+                                <h3 class="sec-title__title">Meet Our Women Led Leadership <span class="sec-title__title__inner">Team</span></h3>
+                            </div>
+                        </div>
+                        <div class="col-xxl-4 col-lg-5 wow fadeInRight" data-wow-duration="1500ms">
+                            <p class="team-one__text">Allied Angels is guided by women with lived experience who lead with empathy, wisdom, and purpose. Our leadership is rooted in listening, accountability, and walking alongside those we serve.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-one__carousel cleenhearts-owl__carousel cleenhearts-owl__carousel--with-shadow cleenhearts-owl__carousel--basic-nav owl-theme owl-carousel" data-owl-options='{
+            "items": 3,
+            "margin": 30,
+            "smartSpeed": 700,
+            "loop":false,
+            "autoplay": 6000,
+            "nav":true,
+            "dots":false,
+            "navText": ["<span class=\"icon-arrow-left\"></span>","<span class=\"icon-arrow-right\"></span>"],
+            "responsive":{
+                "0":{
+                    "items": 1,
+                    "margin": 20
+                },
+                "575":{
+                    "items": 1,
+                    "margin": 30
+                },
+                "768":{
+                    "items": 2,
+                    "margin": 30
+                },
+                "992":{
+                    "items": 3,
+                    "margin": 30
+                },
+                "1200":{
+                    "items": 3,
+                    "margin": 30
+                }
+            }
+            }'>
+                    <div class="item">
+                        <div class="team-single">
+                            <div class="team-single__image">
+                                <img src="{% static 'images/team/lindsay.jpg' %}" alt="Harry P. Finch">
+                                <div class="team-single__content">
+                                    <ul class="team-single__social person-social">
+                                        <li>
+                                            <a href="https://facebook.com"><span class="icon-facebook"></span></a>
+                                        </li>
+                                        <li>
+                                            <a href="ttps://twitter.com"><span class="icon-twitter"></span></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://linkedin.com"><span class="icon-linkedin"></span></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://youtube.com"><span class="icon-youtube"></span></a>
+                                        </li>
+                                    </ul><!-- /.team-single__social -->
+                                    <div class="team-single__content__inner">
+                                        <h4 class="team-single__name">Lindsay Casey</h4><!-- /.team-single__name -->
+                                        <p class="team-single__designation">Founder & CEO</p><!-- /.team-single__designation -->
+                                    </div><!-- /.team-single__content__inner -->
+                                </div><!-- /.team-single__content -->
+                            </div><!-- /.team-single__image -->
+                        </div><!-- /.team-single -->
+                    </div><!-- /.item -->
+                    <div class="item">
+                        <div class="team-single">
+                            <div class="team-single__image">
+                                <img src="{% static 'images/team/keri.jpg' %}" alt="Patricia E. Wall">
+                                <div class="team-single__content">
+                                    <ul class="team-single__social person-social">
+                                        <li>
+                                            <a href="https://facebook.com"><span class="icon-facebook"></span></a>
+                                        </li>
+                                        <li>
+                                            <a href="ttps://twitter.com"><span class="icon-twitter"></span></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://linkedin.com"><span class="icon-linkedin"></span></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://youtube.com"><span class="icon-youtube"></span></a>
+                                        </li>
+                                    </ul><!-- /.team-single__social -->
+                                    <div class="team-single__content__inner">
+                                        <h4 class="team-single__name">Keri Owen</h4><!-- /.team-single__name -->
+                                        <p class="team-single__designation">President</p><!-- /.team-single__designation -->
+                                    </div><!-- /.team-single__content__inner -->
+                                </div><!-- /.team-single__content -->
+                            </div><!-- /.team-single__image -->
+                        </div><!-- /.team-single -->
+                    </div><!-- /.item -->
+                    <div class="item">
+                        <div class="team-single">
+                            <div class="team-single__image">
+                                <img src="{% static 'images/team/jesse.jpg' %}" alt="Alan P. Moe">
+                                <div class="team-single__content">
+                                    <ul class="team-single__social person-social">
+                                        <li>
+                                            <a href="https://facebook.com"><span class="icon-facebook"></span></a>
+                                        </li>
+                                        <li>
+                                            <a href="ttps://twitter.com"><span class="icon-twitter"></span></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://linkedin.com"><span class="icon-linkedin"></span></a>
+                                        </li>
+                                        <li>
+                                            <a href="https://youtube.com"><span class="icon-youtube"></span></a>
+                                        </li>
+                                    </ul><!-- /.team-single__social -->
+                                    <div class="team-single__content__inner">
+                                        <h4 class="team-single__name">Jesse Malone</h4><!-- /.team-single__name -->
+                                        <p class="team-single__designation">Technology Director</p><!-- /.team-single__designation -->
+                                    </div><!-- /.team-single__content__inner -->
+                                </div><!-- /.team-single__content -->
+                            </div><!-- /.team-single__image -->
+                        </div><!-- /.team-single -->
+                    </div><!-- /.item -->
+
+
+                </div><!-- /.team-one__carousel -->
+            </div><!-- /.container -->
+        </section><!-- /.team-one section-space -->
+
+        <!-- FAQs -->
+        <section class="faq-one faq-one--about section-space">
+            <div class="faq-one__bg" style="background-image: url('{% static 'images/backgrounds/faq-bg-2.png' %}');"></div>
+            <div class="container">
+                <div class="row gutter-y-50">
+                    <div class="col-xl-6 col-lg-6 wow fadeInLeft" data-wow-duration="1500ms" data-wow-delay="100ms">
+                        <div class="faq-one__image">
+                            <img src="{% static 'images/about/faq.png' %}" alt="faq-image">
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="faq-one__content">
+                            <div class="sec-title">
+
+                                <h6 class="sec-title__tagline @@extraClassName">Recently asked questions</h6>
+
+                                <h3 class="sec-title__title">People Are Frequently Asking Some <span class="sec-title__title__inner">Questions</span></h3>
+                            </div>
+                            <p class="faq-one__text">Questions are welcome here. We believe clarity builds safety, and understanding helps you decide what feels right for you as you explore our community.</p>
+                            <div class="cleenhearts-accordion wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="100ms" data-grp-name="cleenhearts-accordion">
+                                <div class="accordion @@extraClassName">
+                                    <div class="accordion-title">
+                                        <h4>
+                                            How do I sign up?
+                                            <span class="accordion-title__icon"></span>
+                                        </h4>
+                                    </div>
+                                    <div class="accordion-content">
+                                        <div class="inner">
+                                            <p>You can start by sharing your contact information through our <a href="{% url 'connect' %}">Connect page</a> and letting us know what you’re interested in. We’ll follow up with next steps when you’re ready.</p>
+                                            <br>
+                                            <p>You’re also welcome to attend any of our scheduled events. You do not need to sign up in advance to attend an event. Visit our Events page to see upcoming times and locations.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion @@extraClassName">
+                                    <div class="accordion-title">
+                                        <h4>
+                                            How much does it cost?
+                                            <span class="accordion-title__icon"></span>
+                                        </h4>
+                                    </div>
+                                    <div class="accordion-content">
+                                        <div class="inner">
+                                            <p>There are no membership fees. You can donate if you have funds for that, but it is not necessary for attendance or participation.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion @@extraClassName">
+                                    <div class="accordion-title">
+                                        <h4>
+                                            What is the difference between the ALL Haven Gathering and the Flight Club?
+                                            <span class="accordion-title__icon"></span>
+                                        </h4>
+                                    </div>
+                                    <div class="accordion-content">
+                                        <div class="inner">
+                                            <p>The gathering happens once a month and is a time to meet new people, walk, talk, and get used to people in the group on a regular basis and in a more casual environment. The Flight Club weekly meetings are when you sign up for the All Haven Goal Program. You will get a program manual. Journal and discuss difficulties accomplishing your goals. Allied Angels will help you plan your SMART goals and provide resources on how to accomplish each of your goals, we will celebrate your progress, and earn your wings and in the end your halo to begin mentoring others working on their goals.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials-two section-space">
+            <div class="container">
+                <div class="testimonials-two__top">
+                    <div class="row gutter-y-30 align-items-center">
+                        <div class="col-lg-7">
+                            <div class="sec-title">
+
+                                <h6 class="sec-title__tagline @@extraClassName">TESTIMONIALS</h6>
+
+                                <h3 class="sec-title__title">What They’re Saying About Allied <span class="sec-title__title__inner">Angels</span></h3>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 wow fadeInRight" data-wow-duration="1500ms">
+                            <p class="testimonials-two__text">Every story shared reflects courage, growth, and connection. These voices remind us that healing is not linear, but it is possible together.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonials-two__carousel cleenhearts-owl__carousel cleenhearts-owl__carousel--basic-nav owl-theme owl-carousel" data-owl-options='{
+            "items": 1,
+            "margin": 30,
+            "smartSpeed": 700,
+            "loop":true,
+            "autoplay": 6000,
+            "nav":false,
+            "dots":false,
+            "navText": ["<span class=\"icon-arrow-left\"></span>","<span class=\"icon-arrow-right\"></span>"],
+            "responsive":{
+                "0":{
+                    "items": 1,
+                    "dots": true,
+                    "loop":true,
+                    "margin": 20
+                },
+                "575":{
+                    "items": 1,
+                    "dots": true,
+                    "loop":true,
+                    "margin": 30
+                },
+                "768":{
+                    "items": 1,
+                    "dots": true,
+                    "loop":true,
+                    "margin": 30
+                },
+                "992":{
+                    "items": 2,
+                    "dots": false,
+                    "loop": false,
+                    "margin": 30
+                },
+                "1200":{
+                    "items": 2,
+                    "dots": false,
+                    "loop": false,
+                    "margin": 30
+                }
+            }
+            }'>
+                    <div class="item wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+                        <div class="testimonials-card @@extraClassName">
+                            <div class="testimonials-card__bg" style="background-image: url('{% static 'images/backgrounds/testimonial-bg-2.png' %}');"></div>
+                            <div class="testimonials-card__top">
+                                <div class="testimonials-card__quote">
+                                    <span class="icon-quote-2"></span>
+                                </div>
+                                <!--<a href="https://www.youtube.com/watch?v=h9MbznbxlLc" class="testimonials-card__video video-button video-popup">
+                                    <span class="icon-play"></span>
+                                    <i class="video-button__ripple"></i>
+                                </a>-->
+                            </div>
+                            <div class="testimonials-card__content">
+                                <p class="testimonials-card__text">At the walk and talk, I was met with compassion and understanding from other DV survivors. It was healing to be able to talk about what I’ve been going through and reminded I’m not alone.</p>
+                                <div class="testimonials-card__info">
+                                    <div class="testimonials-card__info__left">
+                                        <h4 class="testimonials-card__name">Amber</h4>
+                                        <span class="testimonials-card__designation">marketing manager</span>
+                                    </div>
+                                    <div class="cleenhearts-ratings testimonials-card__rattings">
+                                        <span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="item wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="200ms">
+                        <div class="testimonials-card @@extraClassName">
+                            <div class="testimonials-card__bg" style="background-image: url('assets/images/backgrounds/testimonial-bg-2.png');"></div>
+                            <div class="testimonials-card__top">
+                                <div class="testimonials-card__quote">
+                                    <span class="icon-quote-2"></span>
+                                </div>
+                                <a href="https://www.youtube.com/watch?v=h9MbznbxlLc" class="testimonials-card__video video-button video-popup">
+                                    <span class="icon-play"></span>
+                                    <i class="video-button__ripple"></i>
+                                </a>
+                            </div>
+                            <div class="testimonials-card__content">
+                                <p class="testimonials-card__text">posuere luctus orci. Donec vitae mattis quam, vitae tempor arcu. Aenean non odio porttitor, convallis erat sit amet.</p>
+                                <div class="testimonials-card__info">
+                                    <div class="testimonials-card__info__left">
+                                        <h4 class="testimonials-card__name">Cedric J. Coggins</h4>
+                                        <span class="testimonials-card__designation">Tropical zodiac</span>
+                                    </div>
+                                    <div class="cleenhearts-ratings testimonials-card__rattings">
+                                        <span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+        </section>
+
+        <!-- Donate -->
+        <section class="help-people" style="background-image: url('{% static 'images/backgrounds/help-people-bg-1.png' %}');">
+            <div class="container">
+                <div class="row">
+                    <div class="help-people__images col-xl-6">
+                        <div class="help-people__images__inner">
+                            <img src="{% static 'images/about/faq.png' %}" alt="help-people" class="wow fadeInLeft" data-wow-duration="1500ms" data-wow-delay="800ms">
+                            <img src="{% static 'images/about/about_donate_2.png' %}" alt="help-people" class="wow fadeInLeft" data-wow-duration="1500ms" data-wow-delay="400ms">
+                            <img src="{% static 'images/about/about_donate_1.png' %}" alt="help-people" class="wow fadeInLeft" data-wow-duration="1500ms" data-wow-delay="00ms">
+                        </div>
+                    </div>
+                    <div class="help-people__content col-xl-6">
+                        <div class="help-people__content__inner">
+                            <div class="sec-title">
+
+                                <h6 class="sec-title__tagline @@extraClassName">Help victoms now</h6>
+
+                                <h3 class="sec-title__title">A safe place to heal and <span class="sec-title__title__inner">Grow</span></h3>
+                            </div>
+                            <p class="help-people__text">Your support helps sustain a survivor led community where women are met with dignity, care, and understanding. Every contribution strengthens access to connection, education, and hope.</p>
+                            <div class="help-people__content__bottom">
+                                <a href="{% url 'connect' %}" class="cleenhearts-btn">
+                                    <div class="cleenhearts-btn__icon-box">
+                                        <div class="cleenhearts-btn__icon-box__inner"><span class="icon-duble-arrow"></span></div>
+                                    </div>
+                                    <span class="cleenhearts-btn__text">Connect With Us</span>
+                                </a>
+                                <!--<div class="volunteer-group">
+                                    <a href="volunteer-details.html" class="volunteer-group__link">
+                                        <img src="assets/images/volunteer/volunteer-image-1.png" alt="volunteer" class="volunteer-group__image">
+                                    </a>
+                                    <a href="volunteer-details.html" class="volunteer-group__link">
+                                        <img src="assets/images/volunteer/volunteer-image-2.png" alt="volunteer" class="volunteer-group__image">
+                                    </a>
+                                    <a href="volunteer-details.html" class="volunteer-group__link">
+                                        <img src="assets/images/volunteer/volunteer-image-3.png" alt="volunteer" class="volunteer-group__image">
+                                    </a>
+                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="help-people__shape">
+                <img src="{% static 'images/shapes/help-people-shape-1.png' %}" alt="help-people" class="help-people__shape__one">
+            </div>
+        </section>
+
+        <!--<div class="client-carousel @@extraClassName">
+            <div class="container">
+                <div class="client-carousel__one cleenhearts-owl__carousel cleenhearts-owl__carousel--basic-nav owl-theme owl-carousel" data-owl-options='{
+            "items": 5,
+            "margin": 65,
+            "smartSpeed": 700,
+            "loop":true,
+            "autoplay": 6000,
+            "nav":true,
+            "dots":false,
+            "navText": ["<span class=\"icon-arrow-left\"></span>","<span class=\"icon-arrow-right\"></span>"],
+            "responsive":{
+                "0":{
+                    "items": 2,
+                    "margin": 50
+                },
+                "360":{
+                    "items": 3,
+                    "margin": 40
+                },
+                "575":{
+                    "items": 4,
+                    "margin": 40
+                },
+                "768":{
+                    "items": 4,
+                    "margin": 80
+                },
+                "992":{
+                    "items": 5,
+                    "margin": 100
+                },
+                "1200":{
+                    "items": 6,
+                    "margin": 134
+                }
+            }
+            }'>
+                    <div class="client-carousel__item">
+                        <img src="assets/images/resources/brand-1-1.png" alt="brand" class="client-carousel__item__img">
+                        <img src="assets/images/resources/brand-1-7.png" alt="brand" class="client-carousel__item__hover-img">
+                    </div>
+                    <div class="client-carousel__item">
+                        <img src="assets/images/resources/brand-1-2.png" alt="brand" class="client-carousel__item__img">
+                        <img src="assets/images/resources/brand-1-8.png" alt="brand" class="client-carousel__item__hover-img">
+                    </div>
+                    <div class="client-carousel__item">
+                        <img src="assets/images/resources/brand-1-3.png" alt="brand" class="client-carousel__item__img">
+                        <img src="assets/images/resources/brand-1-9.png" alt="brand" class="client-carousel__item__hover-img">
+                    </div>
+                    <div class="client-carousel__item">
+                        <img src="assets/images/resources/brand-1-4.png" alt="brand" class="client-carousel__item__img">
+                        <img src="assets/images/resources/brand-1-10.png" alt="brand" class="client-carousel__item__hover-img">
+                    </div>
+                    <div class="client-carousel__item">
+                        <img src="assets/images/resources/brand-1-5.png" alt="brand" class="client-carousel__item__img">
+                        <img src="assets/images/resources/brand-1-11.png" alt="brand" class="client-carousel__item__hover-img">
+                    </div>
+                    <div class="client-carousel__item">
+                        <img src="assets/images/resources/brand-1-6.png" alt="brand" class="client-carousel__item__img">
+                        <img src="assets/images/resources/brand-1-12.png" alt="brand" class="client-carousel__item__hover-img">
+                    </div>
+                </div>
+            </div>
+        </div>-->
+
+        <!--<section class="subscribe">
+            <div class="subscribe__bg" style="background-image: url('assets/images/backgrounds/subscribe-bg-1-1.jpg');"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms">
+                        <div class="subscribe__content">
+                            <span class="subscribe__title-image icon-email"></span>
+                            <h2 class="subscribe__title">Subscribe Now</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 wow fadeInUp">
+                        <form action="#" data-url="MAILCHIMP_FORM_URL" class="subscribe__form mc-form" data-wow-delay="200ms" data-wow-duration="1500ms">
+                            <input type="email" name="EMAIL" id="subscribe" placeholder="enter your email" class="subscribe__form__input">
+                            <button type="submit" class="subscribe__form__btn"><span class="subscribe__form__btn__text">Subscribe now</span> <span class="subscribe__form__btn__icon icon-paper-plane"></span></button>
+                        </form>
+                        <div class="mc-form__response"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="subscribe__shape">
+                <div class="subscribe__shape__one"></div>
+                <div class="subscribe__shape__two"></div>
+            </div>
+        </section>-->
+
+{% endblock page_content %}

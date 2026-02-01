@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block page_content %}
+
+<section class="section-space-sm">
+    <div class="container">
+        <a href="{% url 'series_list' %}" class="d-inline-flex align-items-center gap-2">
+            <i class="fa fa-arrow-left"></i>
+            Back to Event Series
+        </a>
+
+        <h3 class="sec-title__title">{{ page_title }}</h3>
+        <br>
+
+        <form method="post" novalidate enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.media }}
+
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            {# ===================== BASICS ===================== #}
+            <div class="card mb-4">
+                <div class="card-header"><strong>Basics</strong></div>
+                <div class="card-body">
+
+                    <div class="mb-3">
+                        <label class="form-label">Title</label>
+                        {{ form.title }}
+                        {{ form.title.errors }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Slug</label>
+                        {{ form.slug }}
+                        <div class="form-text">Leave blank to auto-generate</div>
+                        {{ form.slug.errors }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Summary</label>
+                        {{ form.description }}
+                        {{ form.description.errors }}
+                    </div>
+                    <div class="django-ckeditor-fix">
+                        <label class="form-label">Content</label>
+                        {{ form.content }}
+                        {{ form.content.errors }}
+                    </div>
+
+                </div>
+            </div>
+
+            {# ===================== ORGANIZATION ===================== #}
+            <div class="card mb-4">
+                <div class="card-header"><strong>Organization</strong></div>
+                <div class="card-body row g-3">
+
+                    <div class="col-md-6">
+                        <label class="form-label">Category</label>
+                        {{ form.category }}
+                        {{ form.category.errors }}
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Visibility</label>
+                        {{ form.visibility }}
+                        {{ form.visibility.errors }}
+                    </div>
+
+                    <div class="col-md-6 d-flex align-items-end">
+                        <div class="form-check">
+                            {{ form.is_active }}
+                            <label class="form-check-label">Is Active</label>
+                        </div>
+                        {{ form.is_active.errors }}
+                    </div>
+
+                </div>
+            </div>
+
+            {# ===================== DEFAULTS ===================== #}
+            <div class="card mb-4">
+                <div class="card-header"><strong>Defaults</strong></div>
+                <div class="card-body row g-3">
+
+                    <div class="col-md-8">
+                        <label class="form-label">Location/Venue Name</label>
+                        {{ form.default_location }}
+                        {{ form.default_location.errors }}
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Default Duration (minutes)</label>
+                        {{ form.default_duration_minutes }}
+                        {{ form.default_duration_minutes.errors }}
+                    </div>
+
+                    <div class="col-md-12">
+                        <label class="form-label">Location/Venue Address</label>
+                        {{ form.default_address }}
+                        {{ form.default_address.errors }}
+                    </div>
+
+                </div>
+            </div>
+
+            {# ===================== SCHEDULE ===================== #}
+            <div class="card mb-4">
+                <div class="card-header"><strong>Schedule</strong></div>
+                <div class="card-body row g-3">
+
+                    <div class="col-md-4">
+                        <label class="form-label">Start Date</label>
+                        {{ form.start_date }}
+                        {{ form.start_date.errors }}
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">End Date</label>
+                        {{ form.end_date }}
+                        <div class="form-text">Optional</div>
+                        {{ form.end_date.errors }}
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Start Time</label>
+                        {{ form.start_time }}
+                        {{ form.start_time.errors }}
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Recurrence</label>
+                        {{ form.recurrence }}
+                        {{ form.recurrence.errors }}
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Weekday</label>
+                        {{ form.weekday }}
+                        <div class="form-text">Used for weekly/biweekly schedules</div>
+                        {{ form.weekday.errors }}
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Week of Month</label>
+                        {{ form.week_of_month }}
+                        <div class="form-text">Used for monthly patterns (1st, 2nd, 3rd, 4th, last)</div>
+                        {{ form.week_of_month.errors }}
+                    </div>
+
+                </div>
+            </div>
+
+            {# ===================== IMAGE ===================== #}
+            <div class="card mb-4">
+                <div class="card-header"><strong>Image</strong></div>
+                <div class="card-body">
+
+                    <div class="mb-3">
+                        <label class="form-label">Image Attachment</label>
+                        {{ form.image_file }}
+                        {{ form.image_file.errors }}
+
+                        {% if form.show_clear_image %}
+                            <div class="mt-2">
+                                {{ form.clear_image }}
+                                <label for="{{ form.clear_image.id_for_label }}">
+                                    Clear current image
+                                </label>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="d-flex gap-2 justify-content-end">
+                <button type="submit" class="btn btn-all-primary">
+                    {% if object %}Update{% else %}Create{% endif %}
+                </button>
+                <a href="{{ cancel_url }}" class="btn btn-outline-secondary">Cancel</a>
+            </div>
+
+        </form>
+    </div>
+</section>
+
+{% endblock %}

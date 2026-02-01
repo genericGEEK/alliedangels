@@ -1,0 +1,9 @@
+New Allied Angels intake submission
+
+Name: {{ first_name }}{% if last_name %} {{ last_name }}{% endif %}
+Email: {{ email }}
+Phone: {% if phone %}{{ phone }}{% else %}—{% endif %}
+Interests: {{ interests_display }}
+
+Message:
+{% if message %}{{ message }}{% else %}—{% endif %}

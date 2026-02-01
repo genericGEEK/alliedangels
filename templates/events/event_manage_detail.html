@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block page_content %}
+
+<section class="section-space-sm">
+    <div class="container py-4">
+        <a href="{% url 'connect_inbox' %}" class="d-inline-flex align-items-center gap-2">
+            <i class="fa fa-arrow-left"></i>
+            Back to Inbox
+        </a>
+        <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-3">
+            <div>
+                <h1 class="h3 mb-1">{{ event.title }}</h1>
+                <div class="text-muted">
+                    <span class="me-2"><strong>Slug:</strong> {{ event.slug|default:"—" }}</span>
+                    <span class="me-2"><strong>ID:</strong> {{ event.pk }}</span>
+                </div>
+            </div>
+
+            <div class="d-flex flex-wrap gap-2">
+                <a class="btn btn-all-warning"
+                   href="{% url 'event_manage_edit' slug=event.slug %}">
+                    Edit
+                </a>
+                <a class="btn btn-all-danger"
+                   href="{% url 'event_manage_delete' slug=event.slug %}">
+                    Delete
+                </a>
+            </div>
+        </div>
+
+        <div class="row g-3">
+
+            {# LEFT COLUMN #}
+            <div class="col-12 col-lg-8">
+
+                <div class="card mb-3">
+                    <div class="card-header"><strong>Basics</strong></div>
+                    <div class="card-body">
+                        <dl class="row mb-0">
+                            <dt class="col-sm-4">Title</dt>
+                            <dd class="col-sm-8">{{ event.title }}</dd>
+
+                            <dt class="col-sm-4">Summary</dt>
+                            <dd class="col-sm-8">{{ event.summary|default:"—" }}</dd>
+
+                            <dt class="col-sm-4">Featured</dt>
+                            <dd class="col-sm-8">{% if event.is_featured %}Yes{% else %}No{% endif %}</dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-header"><strong>Content</strong></div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <div class="text-muted small mb-1">Rich Content</div>
+                            <div class="border rounded p-3 bg-light">
+                                {% if event.content %}
+                                {{ event.content|safe }}
+                                {% else %}
+                                <span class="text-muted">—</span>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <dl class="row mb-0">
+                            <dt class="col-sm-4">Image Attachment</dt>
+                            <dd class="col-sm-8">
+                                {% if event.image %}
+                                <div class="d-flex flex-column gap-2">
+                                    <div><strong>{{ event.image }}</strong></div>
+                                    {# If your ImageAttachment has a file/url field, adjust below #}
+                                    {# <img src="{{ event.image.file.url }}" alt="" class="img-fluid rounded"
+                                            style="max-height: 260px;"> #}
+                                    <span class="text-muted small">Image is set (thumbnail requires a URL field on ImageAttachment).</span>
+                                </div>
+                                {% else %}
+                                —
+                                {% endif %}
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-header"><strong>Location</strong></div>
+                    <div class="card-body">
+                        <dl class="row mb-0">
+                            <dt class="col-sm-4">Location Name</dt>
+                            <dd class="col-sm-8">{{ event.location_name|default:"—" }}</dd>
+
+                            <dt class="col-sm-4">Address</dt>
+                            <dd class="col-sm-8">{{ event.address|default:"—" }}</dd>
+
+                            <dt class="col-sm-4">Online Event</dt>
+                            <dd class="col-sm-8">{% if event.is_online %}Yes{% else %}No{% endif %}</dd>
+
+                            <dt class="col-sm-4">Meeting URL</dt>
+                            <dd class="col-sm-8">
+                                {% if event.meeting_url %}
+                                <a href="{{ event.meeting_url }}" target="_blank" rel="noopener">{{ event.meeting_url
+                                    }}</a>
+                                {% else %}
+                                —
+                                {% endif %}
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-header"><strong>Registration</strong></div>
+                    <div class="card-body">
+                        <dl class="row mb-0">
+                            <dt class="col-sm-4">Requires Registration</dt>
+                            <dd class="col-sm-8">{% if event.requires_registration %}Yes{% else %}No{% endif %}</dd>
+
+                            <dt class="col-sm-4">Registration URL</dt>
+                            <dd class="col-sm-8">
+                                {% if event.registration_url %}
+                                <a href="{{ event.registration_url }}" target="_blank" rel="noopener">{{
+                                    event.registration_url }}</a>
+                                {% else %}
+                                —
+                                {% endif %}
+                            </dd>
+
+                            <dt class="col-sm-4">Capacity</dt>
+                            <dd class="col-sm-8">{{ event.capacity|default:"—" }}</dd>
+
+                            <dt class="col-sm-4">Registration Deadline</dt>
+                            <dd class="col-sm-8">{{ event.registration_deadline|default:"—" }}</dd>
+                        </dl>
+                    </div>
+                </div>
+
+            </div>
+
+            {# RIGHT COLUMN #}
+            <div class="col-12 col-lg-4">
+
+                <div class="card mb-3">
+                    <div class="card-header"><strong>Schedule</strong></div>
+                    <div class="card-body">
+                        <dl class="row mb-0">
+                            <dt class="col-sm-4">Start</dt>
+                            <dd class="col-sm-8">{{ event.start }}</dd>
+
+                            <dt class="col-sm-4">End</dt>
+                            <dd class="col-sm-8">{{ event.end|default:"—" }}</dd>
+
+                            <dt class="col-sm-4">Timezone</dt>
+                            <dd class="col-sm-8">{{ event.timezone|default:"—" }}</dd>
+                        </dl>
+                    </div>
+                </div>
+
+
+                <div class="card mb-3">
+                    <div class="card-header"><strong>Publishing</strong></div>
+                    <div class="card-body">
+                        <dl class="row mb-0">
+                            <dt class="col-sm-5">Status</dt>
+                            <dd class="col-sm-7">
+                                {% if event.get_status_display %}{{ event.get_status_display }}{% else %}{{
+                                event.status|default:"—" }}{% endif %}
+                            </dd>
+
+                            <dt class="col-sm-5">Visibility</dt>
+                            <dd class="col-sm-7">
+                                {% if event.get_visibility_display %}{{ event.get_visibility_display }}{% else %}{{
+                                event.visibility|default:"—" }}{% endif %}
+                            </dd>
+
+                            <dt class="col-sm-5">Author</dt>
+                            <dd class="col-sm-7">{{ event.author|default:"—" }}</dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-header"><strong>Organization</strong></div>
+                    <div class="card-body">
+                        <dl class="row mb-0">
+                            <dt class="col-sm-5">Category</dt>
+                            <dd class="col-sm-7">{{ event.category|default:"—" }}</dd>
+
+                            <dt class="col-sm-5">Series</dt>
+                            <dd class="col-sm-7">
+                                {% if event.series %}
+                                {{ event.series }}
+                                <div class="text-muted small mt-1">This event is an occurrence generated from a
+                                    series.
+                                </div>
+                                {% else %}
+                                —
+                                {% endif %}
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-header"><strong>Audit</strong></div>
+                    <div class="card-body">
+                        <dl class="row mb-0">
+                            <dt class="col-sm-5">Created</dt>
+                            <dd class="col-sm-7">{{ event.created_at|default:"—" }}</dd>
+
+                            <dt class="col-sm-5">Updated</dt>
+                            <dd class="col-sm-7">{{ event.updated_at|default:"—" }}</dd>
+                        </dl>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock page_content %}

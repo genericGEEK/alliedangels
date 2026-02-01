@@ -1,0 +1,61 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.so
+*.pyo
+*.pyd
+
+# Django stuff
+*.log
+*.pot
+*.pyc
+db.sqlite3
+*.sqlite3
+.env
+.env.*
+
+# Static and media (if built/generated)
+staticfiles/
+media/
+
+
+# Local development artifacts
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+
+# Virtualenv
+venv/
+.env/
+env/
+ENV/
+
+# OS-specific
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Testing and coverage
+.coverage
+coverage.xml
+htmlcov/
+pytest_cache/
+nosetests.xml
+test.db
+
+# Migrations (optional – only if auto-generated and you don’t want to track)
+# myapp/migrations/*.py
+# myapp/migrations/*.pyc
+
+# Compiled front-end files (if using React/Vite/etc)
+node_modules/
+build/
+dist/
+
+# Render or deployment artifacts
+*.sqlite3
+*.pid
+*.pid.lock

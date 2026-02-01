@@ -1,0 +1,364 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{% block title %}Home{% endblock %} | Allied Angels</title>
+    <link rel="canonical" href="{{ request.build_absolute_uri }}"/>
+    <meta http-equiv="content-language" content="en"/>
+    <meta name="theme-color" content="#1A1F71"/>
+
+    <!-- favicons Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicons/apple-touch-icon.png' %}"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicons/favicon-32x32.png' %}"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicons/favicon-16x16.png' %}"/>
+    <link rel="manifest" href="{% static 'images/favicons/site.webmanifest' %}"/>
+
+    <!-- Meta Info -->
+    <meta name="description"
+          content="{{ meta_description|default:'We empower women impacted by gender-based violence through education, community, and lived experience systemic change.' }}"/>
+
+    <meta name="robots" content="{{ robots|default:'index,follow' }}">
+
+    <meta property="og:site_name" content="Allied Angels"/>
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}"/>
+    <meta property="og:title" content="{{ site.site_name|default:'Allied Angels' }}"/>
+    <meta property="og:description"
+          content="{{ og_description|default:'We empower women impacted by gender-based violence through education, community, and lived experience systemic change.' }}"/>
+    <meta property="og:url" content="{{ request.build_absolute_uri }}"/>
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/og/og-default.png' %}"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+    <meta property="og:locale" content="en_US"/>
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Castoro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Schoolbell&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="{% static 'vendors/bootstrap/css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'vendors/bootstrap-select/bootstrap-select.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'vendors/animate/animate.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'vendors/fontawesome/css/all.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'vendors/jquery-ui/jquery-ui.css' %}"/>
+    <link rel="stylesheet" href="{% static 'vendors/jarallax/jarallax.css' %}"/>
+    <link rel="stylesheet" href="{% static 'vendors/jquery-magnific-popup/jquery.magnific-popup.css' %}"/>
+    <link rel="stylesheet" href="{% static 'vendors/nouislider/nouislider.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'vendors/nouislider/nouislider.pips.css' %}"/>
+    <link rel="stylesheet" href="{% static 'vendors/tiny-slider/tiny-slider.css' %}"/>
+    <link rel="stylesheet" href="{% static 'vendors/cleenhearts-icons/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'vendors/swiper/css/swiper-bundle.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'vendors/owl-carousel/css/owl.carousel.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'vendors/owl-carousel/css/owl.theme.default.min.css' %}"/>
+
+    <!-- template styles -->
+    <link rel="stylesheet" href="{% static 'css/cleenhearts.css' %}"/>
+
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "{{ site.site_name|default:'Allied Angels'|escapejs }}",
+          "url": "{{ request.scheme }}://{{ request.get_host }}",
+          {% if site.email %}"email": "{{ site.email|escapejs }}",{% endif %}
+          {% if site.phone %}"telephone": "{{ site.phone|escapejs }}",{% endif %}
+          "logo": "{{ request.scheme }}://{{ request.get_host }}{% static 'images/favicons/apple-icon.png' %}"
+        }
+        </script>
+
+</head>
+
+<body class="custom-cursor">
+
+<div class="custom-cursor__cursor"></div>
+<div class="custom-cursor__cursor-two"></div>
+
+<div class="preloader">
+    <div class="preloader__image" style="background-image: url({% static 'images/loader.png' %});"></div>
+</div>
+<!-- /.preloader -->
+<div class="page-wrapper">
+    {% include 'inc/nav_menu.html' %}
+    {% if request.resolver_match.url_name != 'home' %}
+        {% include "inc/breadcrumbs.html" with page_title=page_title %}
+    {% endif %}
+
+    {% block content %}
+        {% block messages %}
+            {% if messages %}
+                <section class="messages-section">
+                    <div class="container">
+                        {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </section>
+            {% endif %}
+        {% endblock messages %}
+
+        {% block page_content %}{% endblock page_content %}
+    {% endblock content %}
+
+
+    <footer class="main-footer background-white2">
+        <div class="main-footer__top">
+            <div class="container">
+                <div class="row gutter-y-30">
+                    <div class="col-md-12 col-xl-3 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+                        <div class="footer-widget footer-widget--about">
+                            <a href="index.html" class="footer-widget__logo">
+                                <img src="{% static 'images/ALL_Logo_Quicksand_Full_78.png' %}" width="159"
+                                     alt="Cleenhearts HTML Template">
+                            </a>
+                            <p class="footer-widget__about-text">{{ site.tagline }}</p>
+                        </div>
+                        <!--<a href="https://www.google.com/maps/@23.506657,90.3443647,7z?entry=ttu" class="footer-widget__map">
+                            <span class="footer-widget__map__text">View Map</span>
+                            <span class="icon-paper-plane"></span>
+                        </a>-->
+                    </div>
+                    <div class="col-xl-3 col-md-5 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="200ms">
+                        <div class="footer-widget footer-widget--contact">
+                            <h2 class="footer-widget__title">Get in touch!</h2>
+                            <ul class="list-unstyled footer-widget__info">
+                                <!--<li> <span class="icon-location"></span>
+                                    <address>901 N Pitt Str., Suite 170 Alexandria, USA</address>
+                                </li>-->
+                                <li><span class="icon-phone"></span><a href="tel:{{ site.phone }}">{{ site.phone }}</a>
+                                </li>
+                                <li><span class="icon-envelope"></span><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="400ms">
+                        <div class="footer-widget footer-widget--links">
+                            <h2 class="footer-widget__title">Quick Links</h2><!-- /.footer-widget__title -->
+                            <ul class="list-unstyled footer-widget__links">
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="donate-right.html">Programs</a></li>
+                                <li><a href="donate-right.html">Events</a></li>
+                                <li><a href="events-list.html">Contact Us</a></li>
+                                <li><a href="contact.html">Donate</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xl-3 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="600ms">
+                        <div class="footer-widget footer-widget--gallery">
+                            <h2 class="footer-widget__title">What To Expect</h2>
+                            <ul class="list-unstyled footer-widget__links">
+                                <li>Survivor led community</li>
+                                <li>No pressure to share</li>
+                                <li>Attend events without commitment</li>
+                                <li>Engage at your own pace</li>
+                            </ul>
+                            <!--<div class="footer-widget__gallery">
+                                <a href="gallery.html" class="footer-widget__gallery__link">
+                                    <img src="{% static 'images/gallery/footer-widget-gallery-img-1.jpg' %}" alt="footer-widget-gallery">
+                                    <span class="footer-widget__gallery__icon icon-plus"></span>
+                                </a>
+                                <a href="gallery.html" class="footer-widget__gallery__link">
+                                    <img src="{% static 'images/gallery/footer-widget-gallery-img-2.jpg' %}" alt="footer-widget-gallery">
+                                    <span class="footer-widget__gallery__icon icon-plus"></span>
+                                </a>
+                                <a href="gallery.html" class="footer-widget__gallery__link">
+                                    <img src="{% static 'images/gallery/footer-widget-gallery-img-3.jpg' %}" alt="footer-widget-gallery">
+                                    <span class="footer-widget__gallery__icon icon-plus"></span>
+                                </a>
+                                <a href="gallery.html" class="footer-widget__gallery__link">
+                                    <img src="{% static 'images/gallery/footer-widget-gallery-img-4.jpg' %}" alt="footer-widget-gallery">
+                                    <span class="footer-widget__gallery__icon icon-plus"></span>
+                                </a>
+                                <a href="gallery.html" class="footer-widget__gallery__link">
+                                    <img src="{% static 'images/gallery/footer-widget-gallery-img-5.jpg' %}" alt="footer-widget-gallery">
+                                    <span class="footer-widget__gallery__icon icon-plus"></span>
+                                </a>
+                                <a href="gallery.html" class="footer-widget__gallery__link">
+                                    <img src="{% static 'images/gallery/footer-widget-gallery-img-6.jpg' %}" alt="footer-widget-gallery">
+                                    <span class="footer-widget__gallery__icon icon-plus"></span>
+                                </a>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-footer__top__shape-box">
+                <img src="{% static 'images/shapes/footer-shape-hand-1-1.png' %}" alt="hand"
+                     class="main-footer__top__shape-one">
+                <img src="{% static 'images/shapes/footer-shape-hand-1-2.png' %}" alt="hand"
+                     class="main-footer__top__shape-two">
+            </div>
+        </div>
+        <div class="main-footer__bottom">
+            <div class="main-footer__bottom__bg"
+                 style="background: url('{% static 'images/backgrounds/footer-bottom-bg-1-2.png' %}');"></div>
+            <div class="container">
+                <div class="main-footer__bottom__inner">
+                    <p class="main-footer__copyright">
+                        &copy; Copyright <span class="dynamic-year"></span> Allied Angels All Rights Reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<div class="mobile-nav__wrapper">
+    <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+    <div class="mobile-nav__content">
+        <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+        <div class="logo-box">
+            <a href="index.html" aria-label="logo image"><img src="{% static 'images/ALL_Logo_light.png' %}" width="155" alt=""/></a>
+        </div>
+        <div class="mobile-nav__container"></div>
+        <ul class="mobile-nav__contact list-unstyled">
+            <li>
+                <i class="fa fa-envelope"></i>
+                <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+            </li>
+            <li>
+                <i class="fa fa-phone-alt"></i>
+                <a href="tel:{{ site.phone }}">{{ site.phone }}</a>
+            </li>
+        </ul>
+        <div class="mobile-nav__social">
+            <a href="{{ site.facebook_url }}">
+                <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                <span class="sr-only">Facebook</span>
+            </a>
+            <a href="{{ site.instagram_url }}">
+                <i class="fab fa-instagram" aria-hidden="true"></i>
+                <span class="sr-only">Instagram</span>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="search-popup @@extraClassName">
+    <div class="search-popup__overlay search-toggler"></div>
+    <div class="search-popup__content">
+        <form role="search" method="get" class="search-popup__form" action="#">
+            <input type="text" id="search" placeholder="Search Here..."/>
+            <button type="submit" aria-label="search submit" class="cleenhearts-btn">
+                <span><i class="icon-search"></i></span>
+            </button>
+        </form>
+    </div>
+</div>
+
+<a href="#" data-target="html" class="scroll-to-target scroll-to-top">
+    <span class="scroll-to-top__text">back top</span>
+    <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
+</a>
+
+<aside class="sidebar-one">
+    <div class="sidebar-one__overlay sidebar-btn__toggler"></div>
+    <div class="sidebar-one__content">
+        <span class="sidebar-one__close sidebar-btn__toggler"><i class="fa fa-times"></i></span>
+        <div class="sidebar-one__logo sidebar-one__item">
+            <a href="index.html" aria-label="logo image"><img src="{% static 'images/logo-light.png' %}" width="155" alt="logo-dark"/></a>
+        </div>
+        <div class="sidebar-one__about sidebar-one__item">
+            <p class="sidebar-one__about__text">Wimply dummy text of the priatype industry orem Ipsum has Maecenas quis
+                eros at ante</p>
+        </div>
+        <div class="sidebar-one__information sidebar-one__item">
+            <h4 class="sidebar-one__title">Information</h4>
+            <ul class="sidebar-one__information__list">
+                <li>
+                    <span class="sidebar-one__information__icon icon-location"></span>
+                    <address class="sidebar-one__information__address">
+                        <p class="sidebar-one__information__text">85 Ketch Harbour RoadBensalem, PA 19020</p>
+                    </address>
+                </li>
+                <li>
+                    <i class="sidebar-one__information__icon icon-envelope"></i>
+                    <p class="sidebar-one__information__text"><a
+                            href="mailto:needhelp@company.com">needhelp@company.com</a></p>
+                </li>
+                <li>
+                    <span class="sidebar-one__information__icon icon-phone"></span>
+                    <p class="sidebar-one__information__text"><a href="tel:(406)555-0120">(406) 555-0120</a></p>
+                </li>
+            </ul>
+        </div><!-- /.sidebar-one__information -->
+        <div class="sidebar-one__socila social-link sidebar-one__item">
+            <a href="https://facebook.com">
+                <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                <span class="sr-only">Facebook</span>
+            </a>
+            <a href="https://twitter.com">
+                <i class="fab fa-twitter" aria-hidden="true"></i>
+                <span class="sr-only">Twitter</span>
+            </a>
+            <a href="https://linkedin.com" aria-hidden="true">
+                <i class="fab fa-linkedin-in"></i>
+                <span class="sr-only">Linkedin</span>
+            </a>
+            <a href="https://youtube.com" aria-hidden="true">
+                <i class="fab fa-youtube"></i>
+                <span class="sr-only">Youtube</span>
+            </a>
+        </div><!-- /sidebar-one__socila -->
+        <div class="sidebar-one__newsletter sidebar-one__item">
+            <label class="sidebar-one__title" for="sidebar-email">Newsletter Subscribe</label>
+            <form action="#" class="sidebar-one__newsletter__inner mc-form" data-url="MAILCHIMP_FORM_URL">
+                <input type="email" name="sidebar-email" id="sidebar-email" class="sidebar-one__newsletter__input"
+                       placeholder="Email Address">
+                <button type="submit" class="sidebar-one__newsletter__btn"><i class="fa fa-paper-plane"
+                                                                              aria-hidden="true"></i></button>
+            </form>
+            <div class="mc-form__response"></div><!-- /.mc-form__response -->
+        </div><!-- /.sidebar-one__form -->
+    </div><!-- /.sidebar__content -->
+</aside><!-- /.sidebar-one -->
+
+<script>
+    setTimeout(() => {
+        document.querySelectorAll('.alert-success').forEach(el => {
+        el.classList.remove('show')
+
+        // Remove element after Bootstrap fade animation completes
+        el.addEventListener('transitionend', () => {
+          el.remove()
+        }, { once: true })
+      })
+    }, 8000)
+</script>
+
+
+<script src="{% static 'vendors/jquery/jquery-3.7.0.min.js' %}"></script>
+<script src="{% static 'vendors/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'vendors/bootstrap-select/bootstrap-select.min.js' %}"></script>
+<script src="{% static 'vendors/jarallax/jarallax.min.js' %}"></script>
+<script src="{% static 'vendors/jquery-ui/jquery-ui.js' %}"></script>
+<script src="{% static 'vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js' %}"></script>
+<script src="{% static 'vendors/jquery-appear/jquery.appear.min.js' %}"></script>
+<script src="{% static 'vendors/jquery-circle-progress/jquery.circle-progress.min.js' %}"></script>
+<script src="{% static 'vendors/jquery-magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'vendors/jquery-validate/jquery.validate.min.js' %}"></script>
+<script src="{% static 'vendors/nouislider/nouislider.min.js' %}"></script>
+<script src="{% static 'vendors/tiny-slider/tiny-slider.js' %}"></script>
+<script src="{% static 'vendors/wnumb/wNumb.min.js' %}"></script>
+<script src="{% static 'vendors/swiper/js/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'vendors/owl-carousel/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'vendors/wow/wow.js' %}"></script>
+<script src="{% static 'vendors/imagesloaded/imagesloaded.min.js' %}"></script>
+<script src="{% static 'vendors/isotope/isotope.js' %}"></script>
+<script src="{% static 'vendors/countdown/countdown.min.js' %}"></script>
+<script src="{% static 'vendors/jquery-circleType/jquery.circleType.js' %}"></script>
+<script src="{% static 'vendors/jquery-lettering/jquery.lettering.min.js' %}"></script>
+<!-- template js -->
+<script src="{% static 'js/cleenhearts.js' %}"></script>
+<script src="{% static 'js/owl-conditional-loop.js' %}"></script>
+</body>
+
+</html>

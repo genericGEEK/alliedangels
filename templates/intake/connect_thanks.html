@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block page_content %}
+
+        <section class="section-space">
+            <div class="container">
+                <div class="row gutter-y-50">
+
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="faq-one__content">
+                            <div class="sec-title">
+                                <h6 class="sec-title__tagline @@extraClassName">Form Submitted</h6>
+                                <h3 class="sec-title__title">Thank You For Reaching <span class="sec-title__title__inner">Out</span></h3>
+                            </div>
+                            <p class="faq-one__text">We received your message.</p>
+                            <p>Our team will review what you shared and contact you with next steps based on the interests you selected. </p>
+                            <p>You do not need to take any further action right now.</p>
+
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 wow fadeInLeft" data-wow-duration="1500ms" data-wow-delay="100ms">
+                        <div class="faq-one__image">
+                            <img src="{% static 'images/connect/thanks.png' %}" alt="faq-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+{% endblock page_content %}

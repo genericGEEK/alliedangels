@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block page_content %}
+
+<section class="volunteer-page section-space">
+    <div class="container">
+        <div class="row gutter-y-50">
+            <div class="col-lg-6 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+                <div class="become-volunteer__image">
+                    <div class="become-volunteer__image__inner">
+                        <img src="{% static 'images/become-volunteer/connect-with-us.jpg' %}"
+                             alt="become-volunteer">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="300ms">
+                <form action="" class="become-volunteer__form form-one" method="post">
+                    {% csrf_token %}
+                    {% if form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        {{ form.non_field_errors }}
+                    </div>
+                    {% endif %}
+                    <div class="become-volunteer__form__bg"
+                         style="background-image: url('{% static 'images/backgrounds/become-volunteer-bg-1-1.png' %}');"></div>
+                    <h3 class="become-volunteer__form__title">Connect With Allied Angels</h3>
+                    <p class="form-intro">This form is a first step. You're not committing to anything. Share what you're interested in ,
+                        and we'll follow up with next steps when you're ready.</p>
+                    <div class="become-volunteer__form__inner">
+                        <div class="form-one__control">
+                            <!--<input type="text" name="name" id="name" placeholder="enter your Name" class="form-one__control__input">-->
+                            {{ form.first_name }}
+                            {% for err in form.first_name.errors %}
+                                <div class="text-danger">{{ err }}</div>
+                            {% endfor %}
+                        </div>
+                        <div class="form-one__control">
+                            {{ form.last_name }}
+                            {% for err in form.last_name.errors %}
+                                <div class="text-danger">{{ err }}</div>
+                            {% endfor %}
+                        </div>
+                        <div class="form-one__control">
+                            {{ form.email }}
+                            {% for err in form.email.errors %}
+                                <div class="text-danger">{{ err }}</div>
+                            {% endfor %}
+                        </div>
+                        <div class="form-one__control">
+                            {{ form.phone }}
+                            {% for err in form.phone.errors %}
+                                <div class="text-danger">{{ err }}</div>
+                            {% endfor %}
+                        </div>
+                        <!--<div class="form-one__control">
+                            <input type="text" name="date" placeholder="Select date" id="datepicker"
+                                   class="form-one__control__input cleenhearts-datepicker">
+                        </div>-->
+                        <div class="form-one__control">
+                            {{ form.message }}
+                            <!--<textarea name="message" id="message" cols="30" rows="10" placeholder="write message . . ."
+                                      class="form-one__control__input form-one__control__message"></textarea>-->
+                        </div>
+                        <p class="form-intro">
+                            Choose any options that feel right for you right now.
+                        </p>
+                        {% regroup form.fields.interests.queryset by group as grouped_tags %}
+                        {% with selected=form.interests.value %}
+                            {% for g in grouped_tags %}
+                                <h5>{{ g.list.0.get_group_display }}</h5>
+                                <div class="form-one__checkgroup">
+                                    {% for tag in g.list %}
+                                    <label class="form-one__check">
+                                        <input
+                                                type="checkbox"
+                                                class="form-one__check__input"
+                                                name="{{ form.interests.html_name }}"
+                                                value="{{ tag.pk }}"
+                                                {% if selected and tag.pk|stringformat:"s" in selected %}checked{% endif %}
+                                        >
+                                        <span class="form-one__check__box" aria-hidden="true"></span>
+                                        <span class="form-one__check__text">{{ tag.name }}</span>
+                                    </label>
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+                        {% endwith %}
+                        <div class="form-one__control">
+                            <button type="submit" class="cleenhearts-btn cleenhearts-btn--border-base">
+                                        <span class="cleenhearts-btn__icon-box">
+                                            <span class="cleenhearts-btn__icon-box__inner">
+                                                <span class="icon-duble-arrow"></span>
+                                            </span>
+                                        </span>
+                                <span class="cleenhearts-btn__text">send message</span>
+                            </button>
+                        </div><!-- /.become-volunteer__form__bottom -->
+                    </div><!-- /.become-volunteer__form__inner -->
+                </form><!-- /.become-volunteer__form -->
+            </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section><!-- /.become-volunteer section-space -->
+
+{% endblock page_content %}

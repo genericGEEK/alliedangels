@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Allied Angels</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background-color: #FFFAFA;
+      color: #333;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .logo {
+      max-width: 280px;
+      margin: 0 auto 20px;
+    }
+
+    .hidden {
+      display: none;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4em;
+      color: #7B3F94;
+      margin-bottom: 10px;
+    }
+    .tagline {
+      font-size: 1.2em;
+      color: #5C3C8A;
+      margin-bottom: 30px;
+    }
+    .about {
+      background-color: #F4E7FC;
+      padding: 25px;
+      border-radius: 12px;
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+    .construction {
+      font-style: italic;
+      margin-bottom: 30px;
+    }
+    .contact {
+      margin-top: 20px;
+      font-size: 1em;
+    }
+    .contact a {
+      color: #7B3F94;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .contact a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <img src="{% static 'img/alliedangels_logo_crop.png' %}" alt="Allied Angels Logo" class="logo">
+
+  <h1 class="hidden">Allied Angels</h1>
+  <p class="tagline">Survivors Supporting Survivors</p>
+
+  <p class="construction">Our full website is currently under construction — but we’re so glad you’re here!</p>
+
+  <div class="about">
+    <h2>About Us</h2>
+    <p>
+      Allied Angels is a survivor-led nonprofit supporting women impacted by gender-based violence. We provide safe spaces, peer support, and resources that promote healing, empowerment, and lasting change. Our mission is simple: <strong>Survivors supporting survivors.</strong>
+    </p>
+  </div>
+
+  <div class="contact">
+    <p><strong>Contact Us</strong></p>
+    <p><a href="mailto:info@alliedangels.org">info@alliedangels.org</a><br>
+    (307) 439-4330</p>
+    <p><a href="https://www.facebook.com/profile.php?id=61561214878542" target="_blank">Visit us on Facebook</a></p>
+  </div>
+
+  <footer>
+    &copy; 2025 Allied Angels. All rights reserved.
+  </footer>
+
+</body>
+</html>

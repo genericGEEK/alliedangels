@@ -1,0 +1,235 @@
+{% extends "base.html" %}
+{% load django_tables2 %}
+{% load static %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block page_content %}
+
+<section class="section-space-sm">
+    <div class="container">
+        <a href="{% url 'event_manage_list' %}" class="d-inline-flex align-items-center gap-2">
+            <i class="fa fa-arrow-left"></i>
+            Back to Events
+        </a>
+        <h3 class="sec-title__title">{{ page_title }}</h3>
+        <br>
+
+        <form method="post" novalidate enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.media }}
+
+            {% if form.non_field_errors %}
+            <div class="alert alert-danger">
+                {{ form.non_field_errors }}
+            </div>
+            {% endif %}
+
+            {# ===================== BASICS ===================== #}
+            <div class="card mb-4">
+                <div class="card-header"><strong>Basics</strong></div>
+                <div class="card-body">
+
+                    <div class="mb-3">
+                        <label class="form-label">Title</label>
+                        {{ form.title }}
+                        {{ form.title.errors }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Slug</label>
+                        {{ form.slug }}
+                        <div class="form-text">Leave blank to auto-generate</div>
+                        {{ form.slug.errors }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Summary</label>
+                        {{ form.summary }}
+                        {{ form.summary.errors }}
+                    </div>
+
+                    <div class="django-ckeditor-fix">
+                        <label class="form-label">Content</label>
+                        {{ form.content }}
+                        {{ form.content.errors }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Featured</label>
+                        <div class="form-check">
+                            {{ form.is_featured }}
+                            <label class="form-check-label">Highlight this event</label>
+                        </div>
+                        {{ form.is_featured.errors }}
+                    </div>
+
+                </div>
+            </div>
+
+            {# ===================== SCHEDULE ===================== #}
+            <div class="card mb-4">
+                <div class="card-header"><strong>Schedule</strong></div>
+                <div class="card-body row g-3">
+
+                    <div class="col-md-6">
+                        <label class="form-label">Start</label>
+                        {{ form.start }}
+                        {{ form.start.errors }}
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">End</label>
+                        {{ form.end }}
+                        {{ form.end.errors }}
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Timezone</label>
+                        {{ form.timezone }}
+                        {{ form.timezone.errors }}
+                    </div>
+
+                </div>
+            </div>
+
+            {# ===================== LOCATION ===================== #}
+            <div class="card mb-4">
+                <div class="card-header"><strong>Location</strong></div>
+                <div class="card-body">
+
+                    <div class="form-check mb-3">
+                        {{ form.is_online }}
+                        <label class="form-check-label">This is an online event</label>
+                    </div>
+                    {{ form.is_online.errors }}
+
+                    <div class="mb-3">
+                        <label class="form-label">Location Name</label>
+                        {{ form.location_name }}
+                        {{ form.location_name.errors }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Address</label>
+                        {{ form.address }}
+                        {{ form.address.errors }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Meeting URL</label>
+                        {{ form.meeting_url }}
+                        {{ form.meeting_url.errors }}
+                    </div>
+
+                </div>
+            </div>
+
+            {# ===================== REGISTRATION ===================== #}
+            <div class="card mb-4">
+                <div class="card-header"><strong>Registration</strong></div>
+                <div class="card-body">
+
+                    <div class="form-check mb-3">
+                        {{ form.requires_registration }}
+                        <label class="form-check-label">
+                            Attendees must register
+                        </label>
+                    </div>
+                    {{ form.requires_registration.errors }}
+
+                    <div class="mb-3">
+                        <label class="form-label">Registration URL</label>
+                        {{ form.registration_url }}
+                        {{ form.registration_url.errors }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Capacity</label>
+                        {{ form.capacity }}
+                        {{ form.capacity.errors }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Registration Deadline</label>
+                        {{ form.registration_deadline }}
+                        {{ form.registration_deadline.errors }}
+                    </div>
+
+                </div>
+            </div>
+
+            {# ===================== ORGANIZATION ===================== #}
+            <div class="card mb-4">
+                <div class="card-header"><strong>Organization</strong></div>
+                <div class="card-body row g-3">
+
+                    <div class="col-md-6">
+                        <label class="form-label">Category</label>
+                        {{ form.category }}
+                        {{ form.category.errors }}
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Series</label>
+                        {{ form.series }}
+                        {{ form.series.errors }}
+                    </div>
+
+                </div>
+            </div>
+
+            {# ===================== PUBLISHING ===================== #}
+            <div class="card mb-4">
+                <div class="card-header"><strong>Publishing</strong></div>
+                <div class="card-body row g-3">
+
+                    <div class="col-md-4">
+                        <label class="form-label">Status</label>
+                        {{ form.status }}
+                        {{ form.status.errors }}
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Visibility</label>
+                        {{ form.visibility }}
+                        {{ form.visibility.errors }}
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Author</label>
+                        {{ form.author }}
+                        {{ form.author.errors }}
+                    </div>
+
+                </div>
+            </div>
+
+            {# ===================== IMAGE ===================== #}
+            <div class="card mb-4">
+                <div class="card-header"><strong>Image</strong></div>
+                <div class="card-body">
+
+                    <div class="mb-3">
+                        <label class="form-label">Image Attachment</label>
+                        {{ form.image_file }}
+                        {{ form.image_file.errors }}
+                        {% if form.show_clear_image %}
+                            {{ form.clear_image }} <label for="{{ form.clear_image.id_for_label }}">Clear current
+                            image</label>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="d-flex gap-2 justify-content-end">
+                <button type="submit" class="btn btn-all-primary">
+                    {% if object %}Update{% else %}Create{% endif %}
+                </button>
+                <a href="{{ cancel_url }}" class="btn btn-outline-secondary">Cancel</a>
+            </div>
+
+        </form>
+    </div>
+</section>
+
+{% endblock %}

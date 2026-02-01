@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block page_content %}
+
+<section class="section-space-sm">
+    <div class="container">
+        <a href="{% url 'connect_inbox' %}" class="d-inline-flex align-items-center gap-2">
+            <i class="fa fa-arrow-left"></i>
+            Back to Inbox
+        </a>
+        <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-3">
+            <div>
+                <h1 class="h3 mb-1">{{ series.title }}</h1>
+                <div class="text-muted">
+                    <span class="me-3"><strong>Slug:</strong> {{ series.slug|default:"—" }}</span>
+                    <span class="me-3"><strong>ID:</strong> {{ series.pk }}</span>
+                </div>
+            </div>
+
+            <div class="d-flex flex-wrap gap-2">
+                <a class="btn btn-all-warning"
+                   href="{% url 'series_edit' slug=series.slug %}">
+                    Edit
+                </a>
+                <a class="btn btn-all-danger"
+                   href="{% url 'series_delete' slug=series.slug %}">
+                    Delete
+                </a>
+            </div>
+        </div>
+
+        <div class="row g-3">
+
+            <div class="col-12 col-lg-8">
+
+                <div class="card mb-3">
+                    <div class="card-header"><strong>Basics</strong></div>
+                    <div class="card-body">
+                        <dl class="row mb-0">
+                            <dt class="col-sm-4">Title</dt>
+                            <dd class="col-sm-8">{{ series.title }}</dd>
+
+                            <dt class="col-sm-4">Description</dt>
+                            <dd class="col-sm-8">{{ series.description|default:"—" }}</dd>
+
+                            <dt class="col-sm-4">Category</dt>
+                            <dd class="col-sm-8">{{ series.category|default:"—" }}</dd>
+
+                            <dt class="col-sm-4">Image Attachment</dt>
+                            <dd class="col-sm-8">
+                                {% if series.image %}
+                                <strong>{{ series.image }}</strong>
+                                <div class="text-muted small mt-1">Image is set (thumbnail depends on ImageAttachment
+                                    file/url field).
+                                </div>
+                                {% else %}
+                                —
+                                {% endif %}
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-header"><strong>Defaults for occurrences</strong></div>
+                    <div class="card-body">
+                        <dl class="row mb-0">
+                            <dt class="col-sm-4">Default location</dt>
+                            <dd class="col-sm-8">{{ series.default_location|default:"—" }}</dd>
+                            <dt class="col-sm-4">Default Address</dt>
+                            <dd class="col-sm-8">{{ series.default_address|default:"—" }}</dd>
+                            <dt class="col-sm-4">Default duration</dt>
+                            <dd class="col-sm-8">{{ series.default_duration_minutes }} minutes</dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-header"><strong>Schedule</strong></div>
+                    <div class="card-body">
+                        <dl class="row mb-0">
+                            <dt class="col-sm-4">Start date</dt>
+                            <dd class="col-sm-8">{{ series.start_date }}</dd>
+
+                            <dt class="col-sm-4">End date</dt>
+                            <dd class="col-sm-8">{{ series.end_date|default:"—" }}</dd>
+
+                            <dt class="col-sm-4">Start time</dt>
+                            <dd class="col-sm-8">{{ series.start_time }}</dd>
+
+                            <dt class="col-sm-4">Recurrence</dt>
+                            <dd class="col-sm-8">
+                                {% if series.get_recurrence_display %}
+                                {{ series.get_recurrence_display }}
+                                {% else %}
+                                {{ series.recurrence|default:"—" }}
+                                {% endif %}
+                            </dd>
+
+                            <dt class="col-sm-4">Weekday</dt>
+                            <dd class="col-sm-8">
+                                {% if series.weekday is not None %}
+                                {# 0=Mon ... 6=Sun. If you already have a helper, use that instead. #}
+                                {% with d=series.weekday %}
+                                    {% if d == 0 %}Monday{% elif d == 1 %}Tuesday{% elif d == 2 %}Wednesday{% elif d == 3 %}Thursday{% elif d == 4 %}Friday{% elif d == 5 %}Saturday{% elif d == 6 %}Sunday{% endif %}
+                                {% endwith %}
+                                {% else %}
+                                —
+                                {% endif %}
+                            </dd>
+
+                            <dt class="col-sm-4">Week of month</dt>
+                            <dd class="col-sm-8">
+                                {% if series.week_of_month %}
+                                {% if series.week_of_month == 1 %}1st
+                                {% elif series.week_of_month == 2 %}2nd
+                                {% elif series.week_of_month == 3 %}3rd
+                                {% elif series.week_of_month == 4 %}4th
+                                {% elif series.week_of_month == 5 %}last
+                                {% else %}{{ series.week_of_month }}
+                                {% endif %}
+                                {% else %}
+                                —
+                                {% endif %}
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-12 col-lg-4">
+
+                <div class="card mb-3">
+                    <div class="card-header"><strong>Status</strong></div>
+                    <div class="card-body">
+                        <dl class="row mb-0">
+                            <dt class="col-sm-5">Is Active</dt>
+                            <dd class="col-sm-7">{% if series.is_active %}Yes{% else %}No{% endif %}</dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-header"><strong>Audit</strong></div>
+                    <div class="card-body">
+                        <dl class="row mb-0">
+                            <dt class="col-sm-5">Created</dt>
+                            <dd class="col-sm-7">{{ series.created_at|default:"—" }}</dd>
+
+                            <dt class="col-sm-5">Updated</dt>
+                            <dd class="col-sm-7">{{ series.updated_at|default:"—" }}</dd>
+                        </dl>
+                    </div>
+                </div>
+
+                {# Optional future enhancement #}
+                <div class="card">
+                    <div class="card-header"><strong>Occurrences</strong></div>
+                    <div class="card-body">
+                        <div class="text-muted small">
+                            Add a “recent / upcoming occurrences” list here once you wire the query.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock page_content %}

@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load static %}
+{% load render_table from django_tables2 %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block page_content %}
+
+<section class="section-space-sm">
+    <div class="container">
+        <a href="{% url 'connect_inbox' %}" class="d-inline-flex align-items-center gap-2">
+            <i class="fa fa-arrow-left"></i>
+            Back to Inbox
+        </a>
+        <!--<h6 class="sec-title__tagline">Connection Requests</h6>-->
+        <h3 class="sec-title__title">{{ record.get_full_name }}</h3>
+        <div class="d-flex align-items-start justify-content-between mb-3">
+            <div>
+                <h2 class="mb-1">{{ record.name }}</h2>
+
+                <div class="text-muted">
+                    {% if record.created_at %}
+                    Submitted {{ record.created_at|date:"M j, Y g:i A" }}
+                    {% else %}
+                    Submitted date not available
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="text-end">
+                {% if record.contacted %}
+                <span class="badge bg-success">Contacted</span>
+                {% if record.contacted_at %}
+                <div class="small text-muted mt-1">
+                    {{ record.contacted_at|date:"M j, Y g:i A" }}
+                </div>
+                {% endif %}
+                {% else %}
+                <form method="post" action="{% url 'connect_inbox_contact' record.pk %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-success">Mark Contacted</button>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-lg-4">
+
+                <div class="card">
+                    <div class="card-header">Contact info</div>
+                    <div class="card-body">
+
+                        <div class="mb-3">
+                            <div class="small text-muted">Email</div>
+                            {% if record.email %}
+                            <a href="mailto:{{ record.email }}">{{ record.email }}</a>
+                            {% else %}
+                            <span class="text-muted">None</span>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-0">
+                            <div class="small text-muted">Phone</div>
+                            {% if record.phone %}
+                            <a href="tel:{{ record.phone }}">{{ record.phone }}</a>
+                            {% else %}
+                            <span class="text-muted">None</span>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card mt-3">
+                    <div class="card-header">Interests</div>
+                    <div class="card-body">
+                        <div class="d-flex flex-wrap gap-2">
+                            {% for interest in record.interests.all %}
+                            <span class="badge bg-primary">{{ interest }}</span>
+                            {% empty %}
+                            <span class="text-muted">No interests selected.</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-header">Message</div>
+                    <div class="card-body">
+                        {% if record.message %}
+                        <div style="white-space: pre-wrap;">{{ record.message }}</div>
+                        {% else %}
+                        <span class="text-muted">No message provided.</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock page_content %}

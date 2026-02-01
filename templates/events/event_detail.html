@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block page_content %}
+
+        <section class="event-details section-space">
+            <div class="container">
+                <div class="row gutter-y-60">
+                    <div class="col-lg-8">
+                        <div class="event-details__content">
+                            <div class="event-details__image wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+                                <img src="{{ event.image.image.url }}" alt="{{ event.title }}">
+                                <div class="event-details__hall">
+                                    <span>{{ event.category }}</span>
+                                </div>
+                                <div class="event-details__date">
+                                    <span>{{ event.start|date:"d" }}</span>
+                                    <span>{{ event.start|date:"M" }}</span>
+                                </div>
+                            </div>
+                            <div class="event-details__time">
+                                <i class="event-details__time__icon fa fa-clock"></i>
+                                <span class="event-details__time__text">{{ event.start|date:"g:i A" }} - {{ event.end|date:"g:i A" }}</span>
+                            </div>
+                            <h3 class="event-details__title">{{ event.title }}</h3>
+                            <div class="event-details__text">
+                                <p class="event-details__text__inner">
+                                    {% if event.content %}
+                                        {{ event.content|safe }}
+                                    {% elif event.series and event.series.content %}
+                                        {{ event.series.content|safe }}
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="event-details__contact contact-information">
+
+                            <!--<a href="#" class="contact-information__btn cleenhearts-btn">
+                                <div class="cleenhearts-btn__icon-box">
+                                    <div class="cleenhearts-btn__icon-box__inner"><span class="icon-duble-arrow"></span></div>
+                                </div>
+                                <span class="cleenhearts-btn__text">register now</span>
+                            </a>-->
+
+                            <div class="contact-information__phone">
+                                <div class="contact-information__phone__icon">
+                                    <span class="icon-phone"></span>
+                                </div>
+                                <div class="contact-information__phone__text">
+                                    <span>call any time</span>
+                                    <h5><a href="tel:{{ site.phone }}">{{ site.phone }}</a></h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--<div class="event-details__speaker">
+                            <h3 class="event-details__speaker__title event-details__title">event speaker’s</h3>
+                            <div class="event-details__speaker__info wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+                                <div class="event-details__speaker__image">
+                                    <img src="assets/images/events/event-speaker-1-1.png" alt="Alyssa P. Scribner">
+                                </div>
+                                <div class="event-details__speaker__content">
+                                    <div class="event-details__speaker__content__inner">
+                                        <div class="event-details__speaker__indentity">
+                                            <h4 class="event-details__speaker__name">Alyssa P. Scribner</h4>
+                                            <p class="event-details__speaker__designation">Hinkle Deegan</p>
+                                        </div>
+                                        <div class="event-details__speaker__social social-link">
+                                            <a href="https://facebook.com">
+                                                <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                                                <span class="sr-only">Facebook</span>
+                                            </a>
+                                            <a href="https://twitter.com">
+                                                <i class="fab fa-twitter" aria-hidden="true"></i>
+                                                <span class="sr-only">Twitter</span>
+                                            </a>
+                                            <a href="https://linkedin.com" aria-hidden="true">
+                                                <i class="fab fa-linkedin-in"></i>
+                                                <span class="sr-only">Linkedin</span>
+                                            </a>
+                                            <a href="https://youtube.com" aria-hidden="true">
+                                                <i class="fab fa-youtube"></i>
+                                                <span class="sr-only">Youtube</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="event-details__speaker__text">
+                                        <p>Neque porro est qui dolorem ipsum quia quaed inventor veritatis et quasi architecto beatae vitae dicta sunt explicabo. Aelltes port
+                                            lacus quis enim</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="event-details__speaker__info wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="100ms">
+                                <div class="event-details__speaker__image">
+                                    <img src="assets/images/events/event-speaker-1-2.png" alt="Velma P. Hawking">
+                                </div>
+                                <div class="event-details__speaker__content">
+                                    <div class="event-details__speaker__content__inner">
+                                        <div class="event-details__speaker__indentity">
+                                            <h4 class="event-details__speaker__name">Velma P. Hawking</h4>
+                                            <p class="event-details__speaker__designation">social media manager</p>
+                                        </div>
+                                        <div class="event-details__speaker__social social-link">
+                                            <a href="https://facebook.com">
+                                                <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                                                <span class="sr-only">Facebook</span>
+                                            </a>
+                                            <a href="https://twitter.com">
+                                                <i class="fab fa-twitter" aria-hidden="true"></i>
+                                                <span class="sr-only">Twitter</span>
+                                            </a>
+                                            <a href="https://linkedin.com" aria-hidden="true">
+                                                <i class="fab fa-linkedin-in"></i>
+                                                <span class="sr-only">Linkedin</span>
+                                            </a>
+                                            <a href="https://youtube.com" aria-hidden="true">
+                                                <i class="fab fa-youtube"></i>
+                                                <span class="sr-only">Youtube</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="event-details__speaker__text">
+                                        <p>Neque porro est qui dolorem ipsum quia quaed inventor veritatis et quasi architecto beatae vitae dicta sunt explicabo. Aelltes port
+                                            lacus quis enim</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+                    </div>
+                    <div class="col-lg-4">
+                        <aside class="sidebar-event">
+                            <div class="sidebar-event__contact contact-one sidebar-event__item wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
+                                <div class="contact-one__info">
+
+                                    <div class="contact-one__info__item">
+                                        <div class="contact-one__info__icon">
+                                            <span class="icon-phone"></span>
+                                        </div>
+                                        <div class="contact-one__info__content">
+                                            <h4 class="contact-one__info__title">Attendance</h4>
+                                            {% if event.is_online %}Online{% else %}In Person{% endif %}
+                                        </div>
+                                    </div>
+                                    {% if not event.is_online %}
+                                    <div class="contact-one__info__item">
+                                        <div class="contact-one__info__icon">
+                                            <span class="icon-location"></span>
+                                        </div>
+                                        <div class="contact-one__info__content">
+                                            <h4 class="contact-one__info__title">Address</h4>
+                                            <address class="contact-one__info__text">{{ event.address }}</address>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+
+                                    {% if event.capacity %}
+                                    <div class="contact-one__info__item">
+                                        <div class="contact-one__info__icon">
+                                            <span class="icon-phone"></span>
+                                        </div>
+                                        <div class="contact-one__info__content">
+                                            <h4 class="contact-one__info__title">Availability</h4>
+                                            {{ event.capacity }} spots available
+                                        </div>
+                                    </div>
+                                    {% endif %}
+
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+{% endblock page_content %}

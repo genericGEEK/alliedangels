@@ -1,0 +1,10 @@
+<h2>New Allied Angels intake submission</h2>
+
+<p><strong>Name:</strong> {{ first_name }}{% if last_name %} {{ last_name }}{% endif %}</p>
+<p><strong>Email:</strong> {{ email }}</p>
+<p><strong>Phone:</strong> {% if phone %}{{ phone }}{% else %}—{% endif %}</p>
+<p><strong>Interests:</strong> {{ interests_display }}</p>
+
+<p><strong>Message:</strong><br>
+{% if message %}{{ message|linebreaksbr }}{% else %}—{% endif %}
+</p>
