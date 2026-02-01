@@ -144,11 +144,11 @@
                         <div class="footer-widget footer-widget--links">
                             <h2 class="footer-widget__title">Quick Links</h2><!-- /.footer-widget__title -->
                             <ul class="list-unstyled footer-widget__links">
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="donate-right.html">Programs</a></li>
-                                <li><a href="donate-right.html">Events</a></li>
-                                <li><a href="events-list.html">Contact Us</a></li>
-                                <li><a href="contact.html">Donate</a></li>
+                                <li><a href="{% url 'about' %}">About Us</a></li>
+                                <li><a href="{% url 'programs' %}">Programs</a></li>
+                                <li><a href="{% url 'event_list' %}">Events</a></li>
+                                <li><a href="{% url 'connect' %}">Connect</a></li>
+                                <li><a href="#">Donate</a></li>
                             </ul>
                         </div>
                     </div>
