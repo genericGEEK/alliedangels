@@ -11,7 +11,7 @@
                         {% for event in single_events %}
                         <div class="col-lg-12 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="{% widthratio forloop.counter0 1 100 %}ms">
                             <div class="event-card-four">
-                                <a href="event-details-right.html" class="event-card-four__image">
+                                <a href="{% url 'event_detail' event.slug %}" class="event-card-four__image">
                                     <img src="{{ event.image.image.url }}" alt="There are many variations of passages of available but majority have alteration">
                                     <div class="event-card-four__date">
                                         <span>{{ event.start|date:"d" }}</span>
