@@ -1251,7 +1251,6 @@ textarea {
 .block-title__decor {
   width: 21px;
   height: 14px;
-  background-image: url(../images/shapes/leaf-1-1.png);
   background-repeat: no-repeat;
   background-position: top center;
   display: inline-block;
@@ -22849,7 +22848,7 @@ body.boxed-wrapper .main-header__btn {
 body.boxed-wrapper .main-header__cart {
   margin-right: 0;
 }
-/*# sourceMappingURL=cleenhearts.css.map */
+
 
 /*--------------------------------------------------------------
 # Custom
