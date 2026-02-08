@@ -1,82 +1,250 @@
 {% extends "base.html" %}
 {% load static %}
 {% block title %}{{ page_title }}{% endblock %}
-{% block content %}
+{% block page_content %}
 
-{% include "inc/breadcrumbs.html" with page_title=page_title %}
-
-<section class="donate-page section-space">
+        <section class="donations-list-page section-space">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="donate-page__content">
-                            <div class="donate-page__notice">
-                                <i class="fas fa-exclamation-triangle"></i>
-                                <h5 class="donate-page__notice__text">Notice: <span>Test mode is enabled. While in test mode no live donations are processed.</span></h5>
-                            </div><!-- /.donate-page__notice -->
-                            <form action="#" class="donate-page__form">
-                                <div class="donate-page__form__amount">
-                                    <div class="donate-page__form__amount__box">
-                                        <span class="donate-page__form__amount__sign">$</span>
-                                        <input type="text" value="99" name="donate_amount" id="donate_amount" placeholder="Amount" class="donate-page__form__amount__input">
-                                    </div><!-- /.donate-page__form__amount__box -->
-                                    <div class="donate-page__form__amount__buttons">
-                                        <button type="button" class="donate-page__form__amount__btn donate-page__form__amount__btn--amount">$<span class="donate-page__form__amount__btn__text">25</span> </button>
-                                        <button type="button" class="donate-page__form__amount__btn donate-page__form__amount__btn--amount">$<span class="donate-page__form__amount__btn__text">50</span></button>
-                                        <button type="button" class="donate-page__form__amount__btn donate-page__form__amount__btn--amount">$<span class="donate-page__form__amount__btn__text">75</span></button>
-                                        <button type="button" class="donate-page__form__amount__btn donate-page__form__amount__btn--amount active">$<span class="donate-page__form__amount__btn__text">99</span></button>
-                                        <button type="button" class="donate-page__form__amount__btn donate-page__form__amount__btn--amount">$<span class="donate-page__form__amount__btn__text">200</span></button>
-                                        <button type="button" class="donate-page__form__amount__btn">Custom amount</button>
-                                    </div><!-- /.donate-page__form__amount__buttons -->
-                                </div><!-- /.donate-page__form__amount -->
-                                <div class="donate-page__form__payment">
-                                    <h3 class="donate-page__form__title">Select Payment Method</h3><!-- /.donate-page__form__title -->
-                                    <div class="donate-page__form__payment__method">
-                                        <div class="donate-page__form__payment__method__item custom-radio">
-                                            <input type="radio" id="account" name="checkout-info" class="custom-radio__input">
-                                            <label for="account" class="custom-radio__title">test donation</label>
+                <div class="row gutter-y-30">
+                    <div class="col-12">
+                        <div class="donation-card-three donation-card">
+                            <div class="donation-card__bg" style="background-image: url('{% static 'images/backgrounds/donation-bg-2-1.png' %}');"></div>
+                            <div class="row gutter-y-30 align-items-center">
+                                <div class="col-lg-6">
+                                    <a href="#" class="donation-card__image">
+                                        <img src="{% static 'images/donations/rising_donation.jpg' %}" alt="Hard Opening" height="250">
+                                        <div class="donation-card__category">Fundraiser</div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="donation-card__content">
+                                        <h3 class="donation-card__title">Support the Allied Angels Hard Opening</h3>
+                                        <div class="donation-card-three__text">
+                                            <p class="donation-card-three__text__inner">Your donation helps bring The Collective Rising to life and supports our mission to ensure no survivor flies alone. Funds raised from this event provide mentorship materials, advocacy resources, and safe spaces for women beginning their healing journey.</p>
                                         </div>
-                                        <div class="donate-page__form__payment__method__item custom-radio">
-                                            <input type="radio" id="ship" name="checkout-info" class="custom-radio__input" checked>
-                                            <label for="ship" class="custom-radio__title">offline donation</label>
-                                        </div>
+                                        <a href="https://www.paypal.com/donate/?hosted_button_id=XLB62BSKMPVMA" class="donation-card__btn cleenhearts-btn cleenhearts-btn--border-base">
+                                            <div class="cleenhearts-btn__icon-box">
+                                                <div class="cleenhearts-btn__icon-box__inner"><span class="icon-duble-arrow"></span></div>
+                                            </div>
+                                            <span class="cleenhearts-btn__text">Donate Now</span>
+                                        </a>
+                                        <!--<div class="donation-card__progress">
+                                            <div class="progress-box">
+                                                <div class="progress-box__bar">
+                                                    <div class="progress-box__bar__inner count-bar" data-percent='75%'>
+                                                        <div class="progress-box__number count-text">75%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="donation-card__progress__bottom">
+                                                <h5 class="donation-card__progress__title">Raised $<span>80,050</span></h5>
+                                                <h5 class="donation-card__progress__title">goal $<span>90,000</span></h5>
+                                            </div>
+                                        </div>-->
                                     </div>
-                                </div><!-- /.donate-page__form__payment -->
-                                <div class="donate-page__form__info form-one">
-                                    <h3 class="donate-page__form__info__title donate-page__form__title">Personal Info</h3><!-- /.donate-page__form__title -->
-                                    <div class="row gutter-y-30">
-                                        <div class="col-xl-6">
-                                            <div class="form-one__control">
-                                                <input type="text" name="first_name" id="first_name" placeholder="first name" class="form-one__control__input">
-                                            </div><!-- /.form-one__control -->
-                                        </div><!-- /.col-xl-6 -->
-                                        <div class="col-xl-6">
-                                            <div class="form-one__control">
-                                                <input type="text" name="last_name" id="last_name" placeholder="last name" class="form-one__control__input">
-                                            </div><!-- /.form-one__control -->
-                                        </div><!-- /.col-xl-6 -->
-                                        <div class="col-12">
-                                            <div class="form-one__control">
-                                                <input type="email" name="email" id="email" placeholder="email address" class="form-one__control__input">
-                                            </div><!-- /.form-one__control -->
-                                        </div><!-- /.col-12 -->
-                                        <div class="col-12">
-                                            <div class="form-one__control">
-                                                <button type="submit" class="cleenhearts-btn">
-                                                    <span class="cleenhearts-btn__icon-box">
-                                                        <span class="cleenhearts-btn__icon-box__inner"><span class="icon-duble-arrow"></span></span>
-                                                    </span>
-                                                    <span class="cleenhearts-btn__text">donate now</span>
-                                                </button>
-                                            </div><!-- /.form-one__control -->
-                                        </div><!-- /.col-12 -->
-                                    </div><!-- /.row -->
-                                </div><!-- /.donate-page__form__info -->
-                            </form><!-- /.donate-page__form -->
-                        </div><!-- /.donate-page__content -->
-                    </div><!-- /.col-lg-4 -->
-                </div><!-- /.row -->
-            </div><!-- /.container -->
-        </section><!-- /.donate-page section-space -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="donation-card-three donation-card">
+                            <div class="donation-card__bg" style="background-image: url('{% static 'images/backgrounds/donation-bg-2-1.png' %}');"></div>
+                            <div class="row gutter-y-30 align-items-center">
+                                <div class="col-lg-6">
+                                    <a href="donation-details-right.html" class="donation-card__image">
+                                        <img src="{% static 'images/donations/general_donation.png' %}" alt="General Donation" height="250">
+                                        <div class="donation-card__category">General</div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="donation-card__content">
+                                        <h3 class="donation-card__title"><a href="donation-details-right.html">Support Our Ongoing Work</a></h3>
+                                        <div class="donation-card-three__text">
+                                            <p class="donation-card-three__text__inner">Your donation helps Allied Angels provide safe spaces, support groups, and resources for women navigating recovery and healing. Every contribution directly supports our programs and community.</p>
+                                        </div>
+                                        <a href="https://www.paypal.com/donate/?hosted_button_id=5JZHQZT3AB6NQ" class="donation-card__btn cleenhearts-btn cleenhearts-btn--border-base">
+                                            <div class="cleenhearts-btn__icon-box">
+                                                <div class="cleenhearts-btn__icon-box__inner"><span class="icon-duble-arrow"></span></div>
+                                            </div>
+                                            <span class="cleenhearts-btn__text">Donate Now</span>
+                                        </a>
+                                        <!--<div class="donation-card__progress">
+                                            <div class="progress-box">
+                                                <div class="progress-box__bar">
+                                                    <div class="progress-box__bar__inner count-bar" data-percent='75%'>
+                                                        <div class="progress-box__number count-text">75%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="donation-card__progress__bottom">
+                                                <h5 class="donation-card__progress__title">Raised $<span>80,050</span></h5>
+                                                <h5 class="donation-card__progress__title">goal $<span>90,000</span></h5>
+                                            </div>
+                                        </div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-{% endblock content %}
+        <section class="help-people" style="background-image: url('{% static 'images/backgrounds/help-people-bg-1.png' %}');">
+            <div class="container">
+                <div class="sec-title">
+                    <h3 class="sec-title__title color-white">Support <span class="sec-title__title__inner">Levels</span> </h3>
+                </div>
+                <div class="row gutter-y-30">
+                    <div class="col-xl-3 col-md-6  wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="000ms">
+                        <div class="pricing-card" style="background-image: url('{% static 'images/backgrounds/pricing-bg-1-1.jpg' %}');">
+                            <div class="pricing-card__image" style="background-image: url('{% static 'images/pricing/first-light.png' %}');">
+                                <div class="pricing-card__image__content">
+                                    <div class="pricing-card__image__icon"></div>
+                                    <h2 class="pricing-card__title">First Light</h2>
+                                </div>
+                            </div>
+                            <div class="pricing-card__subtitle">
+                                <p>The first ray of hope in helping a survivor through their first goal</p>
+                            </div>
+
+                            <div class="pricing-card__content">
+                                <!--<ul class="pricing-card__list">
+                                    <li>
+                                        <span class="pricing-card__list__icon icon-duble-arrow"></span>
+                                        <span class="pricing-card__list__text"></span>
+                                    </li>
+                                </ul>-->
+                                <div class="pricing-card__price">
+                                    <div class="pricing-card__price__inner">
+                                        <h3 class="pricing-card__price__title">$50</h3>
+                                        <!--<p class="pricing-card__price__tagline">Monthly</p>-->
+                                    </div>
+                                    <a href="https://www.paypal.com/donate/?hosted_button_id=AUVP4SHRLZCYY" class="pricing-card__button"><span class="icon-duble-arrow"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6  wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="000ms">
+                        <div class="pricing-card" style="background-image: url('{% static 'images/backgrounds/pricing-bg-1-1.jpg' %}');">
+                            <div class="pricing-card__image" style="background-image: url('{% static 'images/pricing/rising-chorus.png' %}');">
+                                <div class="pricing-card__image__content">
+                                    <div class="pricing-card__image__icon"></div>
+                                    <h2 class="pricing-card__title">Rising Chorus</h2>
+                                </div>
+                            </div>
+                            <div class="pricing-card__subtitle">
+                                <p>Rising up into accomplishing a couple goals into the sky of their journey.</p>
+                            </div>
+                            <div class="pricing-card__content">
+                                <div class="pricing-card__price">
+                                    <div class="pricing-card__price__inner">
+                                        <h3 class="pricing-card__price__title">$100</h3>
+                                        <!--<p class="pricing-card__price__tagline">Monthly</p>-->
+                                    </div>
+                                    <a href="https://www.paypal.com/donate/?hosted_button_id=QETJCUH66XX6J" class="pricing-card__button"><span class="icon-duble-arrow"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6  wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="400ms">
+                        <div class="pricing-card" style="background-image: url('{% static 'images/backgrounds/pricing-bg-1-1.jpg' %}');">
+                            <div class="pricing-card__image" style="background-image: url('{% static 'images/pricing/sunbeam-flight.png' %}');">
+                                <div class="pricing-card__image__content">
+                                    <div class="pricing-card__image__icon"></div>
+                                    <h2 class="pricing-card__title">Sunbeam Flight</h2>
+                                </div>
+                            </div>
+                            <div class="pricing-card__subtitle">
+                                <p>This donation will help a survivor halfway through their journey into taking off into flight into the light.</p>
+                            </div>
+                            <div class="pricing-card__content">
+
+                                <div class="pricing-card__price">
+                                    <div class="pricing-card__price__inner">
+                                        <h3 class="pricing-card__price__title">$250</h3>
+                                        <!--<p class="pricing-card__price__tagline">Monthly</p>-->
+                                    </div>
+                                    <a href="https://www.paypal.com/donate/?hosted_button_id=GQ2FCL4BPLHLG" class="pricing-card__button"><span class="icon-duble-arrow"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6  wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="400ms">
+                        <div class="pricing-card" style="background-image: url('{% static 'images/backgrounds/pricing-bg-1-1.jpg' %}');">
+                            <div class="pricing-card__image" style="background-image: url('{% static 'images/pricing/golden-horizon.png' %}');">
+                                <div class="pricing-card__image__content">
+                                    <div class="pricing-card__image__icon"></div>
+                                    <h2 class="pricing-card__title">Golden Horizon</h2>
+                                </div>
+                            </div>
+                            <div class="pricing-card__subtitle">
+                                <p>This amount could push a survivor through their full year of mentorship in accomplishing their goals and becoming an ally themselves coming into the full light.</p>
+                            </div>
+                            <div class="pricing-card__content">
+
+                                <div class="pricing-card__price">
+                                    <div class="pricing-card__price__inner">
+                                        <h3 class="pricing-card__price__title">$500</h3>
+                                        <!--<p class="pricing-card__price__tagline">Monthly</p>-->
+                                    </div>
+                                    <a href="https://www.paypal.com/donate/?hosted_button_id=H5HUV3PQ8A6SU" class="pricing-card__button"><span class="icon-duble-arrow"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="help-people__shape">
+                <img src="{% static 'images/shapes/help-people-shape-1.png' %}" alt="help-people" class="help-people__shape__one">
+            </div>
+        </section>
+
+        <div class="client-carousel @@extraClassName">
+            <div class="container">
+                <div class="client-carousel__one cleenhearts-owl__carousel cleenhearts-owl__carousel--basic-nav owl-theme owl-carousel" data-owl-options='{
+            "items": 1,
+            "margin": 65,
+            "smartSpeed": 700,
+            "loop":false,
+            "autoplay": 6000,
+            "nav":true,
+            "dots":false,
+            "navText": ["<span class=\"icon-arrow-left\"></span>","<span class=\"icon-arrow-right\"></span>"],
+            "responsive":{
+                "0":{
+                    "items": 2,
+                    "margin": 50
+                },
+                "360":{
+                    "items": 3,
+                    "margin": 40
+                },
+                "575":{
+                    "items": 4,
+                    "margin": 40
+                },
+                "768":{
+                    "items": 4,
+                    "margin": 80
+                },
+                "992":{
+                    "items": 5,
+                    "margin": 100
+                },
+                "1200":{
+                    "items": 6,
+                    "margin": 134
+                }
+            }
+            }'>
+                    <div class="client-carousel__item">
+                        <img src="{% static 'images/resources/thenic.png' %}" alt="brand" class="client-carousel__item__img">
+                        <!--<img src="assets/images/resources/brand-1-7.png" alt="brand" class="client-carousel__item__hover-img">-->
+                    </div>
+
+                </div><!-- /.thm-owl__slider -->
+            </div><!-- /.container -->
+        </div><!-- /.client-carousel -->
+
+{% endblock page_content %}

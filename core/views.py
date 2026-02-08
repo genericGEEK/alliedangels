@@ -21,13 +21,38 @@ class ProgramPageView(PageMetaMixin, TemplateView):
     is_current = 'program'
     page_title = 'Programs'
 
-    """def get_breadcrumbs(self):
-        return [
-            {"label": "Event Details", "url": reverse("programs:list")},
-            {"label": "Next item in", "url": None},
-        ]"""
 
-class DonatePageView(PageMetaMixin, TemplateView):
+class SupportPageView(PageMetaMixin, TemplateView):
     template_name = 'core/donate.html'
-    is_current = 'dontations'
-    page_title = 'Donations'
+    is_current = 'support'
+    page_title = 'Support'
+
+
+class SupportThanksPageView(PageMetaMixin, TemplateView):
+    template_name = 'core/support_thanks.html'
+    is_current = 'support'
+    page_title = 'Thank You'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_title'] = self.page_title
+        context["breadcrumbs"] = [
+            {"label": "Support", "url": reverse("support")},
+            {"label": self.page_title, "url": None},
+        ]
+        return context
+
+
+class SupportCancelPageView(PageMetaMixin, TemplateView):
+    template_name = 'core/support_cancel.html'
+    is_current = 'support'
+    page_title = 'No Worries'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_title'] = self.page_title
+        context["breadcrumbs"] = [
+            {"label": "Support", "url": reverse("support")},
+            {"label": self.page_title, "url": None},
+        ]
+        return context

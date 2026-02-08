@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block page_content %}
+
+        <section class="section-space">
+            <div class="container">
+                <div class="row gutter-y-50">
+                    <div class="col-xl-6 col-lg-6 wow fadeInLeft" data-wow-duration="1500ms" data-wow-delay="100ms">
+                        <div class="faq-one__image">
+                            <img src="{% static 'images/connect/support-cancel.png' %}" alt="faq-image">
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="faq-one__content">
+                            <div class="sec-title">
+                                <h6 class="sec-title__tagline @@extraClassName">Donation Not Completed</h6>
+                                <h3 class="sec-title__title">No worries</h3>
+                            </div>
+                            <p>Your donation was not completed.</p>
+                            <p>If you have questions or would like to support Allied Angels in another way, we’re always here.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+{% endblock page_content %}

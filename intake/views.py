@@ -90,6 +90,15 @@ class ConnectThanksView(PageMetaMixin, TemplateView):
     is_current = 'connect'
     page_title = 'Thanks'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_title'] = self.page_title
+        context["breadcrumbs"] = [
+            {"label": "Connect", "url": reverse("connect")},
+            {"label": self.page_title, "url": None},
+        ]
+        return context
+
 
 @method_decorator(staff_member_required, name='dispatch')
 class InterestSubmissionListView(PageMetaMixin, SingleTableView):

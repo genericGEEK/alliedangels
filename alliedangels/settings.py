@@ -176,6 +176,12 @@ DEFAULT_FROM_EMAIL = 'Allied Angels <admin@alliedangels.org>'
 DEFAULT_EMAIL_ADDRESS = 'admin@alliedangels.org'
 
 
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
+
 if USE_S3:
     AWS_S3_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
     AWS_S3_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
@@ -191,17 +197,15 @@ if USE_S3:
             "OPTIONS": {
                 "bucket_name": AWS_STORAGE_BUCKET_NAME,
             },
-        },
-        # keep static local so WhiteNoise can serve it
-        "staticfiles": {
-            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
-        },
+        }
     }
 
     # Good to set explicitly so templates use the right URL base
     #MEDIA_URL = f"https://{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com/{AWS_LOCATION}/"
 
 else:
-    DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+    STORAGES["default"] = {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    }
     MEDIA_ROOT = os.path.join(BASE_DIR, "media")
     MEDIA_URL = "/media/"
