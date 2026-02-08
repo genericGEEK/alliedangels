@@ -185,7 +185,6 @@ STORAGES = {
     },
 }
 
-WHITENOISE_MANIFEST_STRICT = False
 
 if USE_S3:
     AWS_S3_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
